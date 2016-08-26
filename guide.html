@@ -123,7 +123,7 @@
 }
 
 - (void)loadHTML:(UIWebView *)webView {
-    [webView loadHTMLString:@"&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(err, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;" baseURL:nil];
+    [webView loadHTMLString:@"&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(meta, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;" baseURL:nil];
 }
 
 @end</code></pre>
@@ -131,7 +131,7 @@
                 <h5>4. 解读</h5>
                 我们创建了一个 WebView，这个 WebView 在创建后就会被注入 SDK 代码，同时，我们让 WebView 加载了一个 HTML 网页，我们使用以下代码请求 SDK 返回结果。
                 <pre><code class="language-js">JSMessage.newMessage('Native.Device').call(
-    function(err, res){
+    function(meta, res){
         document.write('Device Name = ' + res.device.name)
     }
 );</code></pre>
@@ -183,7 +183,7 @@
         LGORuntime.debugEnabled(true);
         WebView webView = new WebView(this);
         LGORuntime.attach(webView);
-        webView.loadData("&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(err, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;", "text/html", "utf-8");
+        webView.loadData("&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(meta, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;", "text/html", "utf-8");
         setContentView(webView, new ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT, 
             ViewGroup.LayoutParams.MATCH_PARENT)
@@ -194,7 +194,7 @@
                 <h5>4. 解读</h5>
                 我们创建了一个 WebView，这个 WebView 在创建后，通过 LGORuntime.attach() 注入 SDK 代码，同时，我们让 WebView 加载了一个 HTML 网页，我们使用以下代码请求 SDK 返回结果。
                 <pre><code class="language-js">JSMessage.newMessage('Native.Device').call(
-    function(err, res){
+    function(meta, res){
         document.write('Device Name = ' + res.device.name)
     }
 );</code></pre>
