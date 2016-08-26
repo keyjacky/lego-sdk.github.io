@@ -47,7 +47,7 @@
                     </li>
                     <li><a href="extension.html">扩展开发</a>
                     </li>
-                    <li><a href="docs/faq/">常见问题</a>
+                    <li><a>常见问题</a>
                     </li>
                 </ul>
             </div>
@@ -214,9 +214,10 @@
                 <pre><code class="language-js">JSMessage.newMessage('Native.Device', {aKey: "aValue"});</code></pre>
 
                 <h5>3. 发起请求，并创建回调</h5>
-                使用 call 方法，发起请求，第一个参数是回调块，回调的第一个参数永远是 error，第二个参数则是 response 对象。
+                使用 call 方法，发起请求，第一个参数是回调块，回调的第一个参数是 meta ，第二个参数则是 response 对象。<br/>
+                meta 对象包含一些错误或成功的状态信息。 如果 meta.error === true，则存在错误。
                 <pre><code class="language-js">JSMessage.newMessage('Native.Device', {aKey: "aValue"}).call(
-    function(err, res){
+    function(meta, res){
         document.write('Device Name = ' + res.device.name)
     }
 );</code></pre>
