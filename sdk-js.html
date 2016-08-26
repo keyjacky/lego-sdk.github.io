@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>JSSDK - LEGO SDK</title>
+
+    <meta name="description" content="Gulp.js 是一个自动化构建工具，开发者可以使用它在项目开发过程中自动执行常见任务。Gulp.js 是基于 Node.js 构建的，利用 Node.js 流的威力，你可以快速构建项目并减少频繁的 IO 操作。Gulp.js 源文件和你用来定义任务的 Gulp 文件都是通过 JavaScript（或者 CoffeeScript ）源码来实现的。">
+    <meta name="keywords" content="Gulp.js,Gulp,Node.js,Node,JavaScript,CoffeeScript,Grunt,Gruntjs,Stream，流,自动化,Make">
+    <meta name="author" content="gulp.js 中文网">
+    <link rel="icon" href="../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.4/styles/monokai_sublime.min.css">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+    .indent1{text-indent: 2em; display: inline-block; *display: inline; *zoom: 1;}
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top site-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">LEGO SDK</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://lego-sdk.github.io/index.html">首页</a>
+                    </li>
+                    <li><a href="https://lego-sdk.github.io/intergrade.html">集成</a>
+                    </li>
+                    <li><a href="https://lego-sdk.github.io/guide.html">入门指南</a>
+                    </li>
+                    <li><a href="https://lego-sdk.github.io/docs/api">API</a>
+                    </li>
+                    <li><a href="https://lego-sdk.github.io/extension.html">扩展开发</a>
+                    </li>
+                    <li><a >常见问题</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <main class="docs-wrapper container">
+        <div class="row">
+            <article class="col-md-8 col-md-push-2 markdown-body" id="docs-content">
+                <h1>JSSDK 简介</h1>
+                
+                * 封装 `LEGO SDK` 的 `Native` 和 `UI` 系列模块 <br/>
+                * 针对以上模块，提供 `Promiseable` 的调用方式，处理异步和异常更简洁；<br/>
+                * 以及提供一个 `d.ts` 头文件，获得语法提示。<br/>
+
+                <h3>源码</h3>
+
+                源码托管在 npm 和 duowan CDN ，提供以下两种获取方式：<br>
+                * npm：执行 `npm i lego-js-sdk` 拉取 <br/>
+                * Duowan CDN：</b><a href="http://assets.dwstatic.com/project/lego-sdk/0.0.1/lego-sdk.min.js">lego-sdk.min.js</a> <a href="http://assets.dwstatic.com/project/lego-sdk/0.0.1/typings/sdk_env.d.ts">lego-sdk.d.ts</a> <br/>
+
+                <h3>接入</h3>
+                在html页面引入:
+                <pre><code class="language-html">&lt;script src="./node_modules/lego-sdk-js/dist/sdk.js" &gt; &lt;/script&gt;
+</code></pre>
+                
+                或者在 .js .ts 文件：
+                <pre><code class="language-js">require("./node_modules/lego-sdk-js/dist/sdk.js")
+</code></pre>       
+
+
+                <h3>语法提示</h3>
+                满足2个条件就可获得 `LEGO-SDK-JS` 语法提示。<br><br/>
+                
+                1. 让你的 IDE 支持 TypeScript <br>
+                <span class="indent1">* Atom: 执行 `apm install atom-typescript`，然后重启。</span> <br/>
+                <span class="indent1">* Sumlime: 通过 `Package Control` 安装 `TypeScript-Sublime-Plugin` </span>
+                <span class="indent1">* Webstorm / Eclipse / NetBeans <a href="https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support">详情</a> </span>
+                 <br/><br/>
+
+                2. 需要提示的 js文件头部引入 `d.ts` 文件，比如
+                <pre><code class="language-typescript">/// &lt;reference path="./node_modules/lego-sdk-js/typings/es6/promise.d.ts" /&gt;
+/// &lt;reference path="./node_modules/lego-sdk-js/typings/sdk_env.d.ts" /&gt;
+</code></pre>       
+
+                
+                <h3>模块调用</h3>
+
+                参见文档 <a href="https://lego-sdk.github.io/docs/js/">sdk-js</a>
+
+            </article>
+        </div>
+
+    </main>
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>LEGO SDK 使用 Apache License, Version 2.0 协议开源</p>
+            <p>&copy; UED Team, YY.Inc 2016</p>
+        </div>
+    </footer>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://cdn.bootcss.com/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
