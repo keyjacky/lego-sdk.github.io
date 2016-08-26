@@ -8,7 +8,7 @@
     <title>扩展开发 - LEGO SDK</title>
     <meta name="description" content="LEGO SDK 是一个轻量的 WebView 增强组件，借助 SDK，只需几行代码，即可集成数十种原生API。">
     <meta name="keywords" content="WebView,SDK,LEGO,API,iOS,Android,UIWebView,WKWebView">
-    <meta name="author" content="YY.Inc UED">
+    <meta name="author" content="YY Inc. UED">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.bootcss.com/highlight.js/8.4/styles/monokai_sublime.min.css">
@@ -45,7 +45,7 @@
                     </li>
                     <li><a href="docs/api/">API</a>
                     </li>
-                    <li><a href="docs/writing-a-plugin/">扩展开发</a>
+                    <li><a href="extension.html">扩展开发</a>
                     </li>
                     <li><a href="docs/faq/">常见问题</a>
                     </li>
@@ -61,7 +61,7 @@
         <div class="row">
             <article class="col-md-8 col-md-push-2 markdown-body" id="docs-content">
                 <h1>扩展开发</h1>
-                如果 SDK 提供的官方 API 未能满足你的需要，你可以自行扩展 API。<br/> 对 SDK 进行扩展十分简单，我们将以一个简单的 Native.Test API 作演示。
+                如果 SDK 提供的官方 API 未能满足你的需要，你可以自行扩展 API。<br/> 对 SDK 进行扩展十分简单，我们将以一个简单的 <span class="text-info">UED.Test</span>                API 作演示。
 
                 <h2>SDK 基类</h2>
 
@@ -97,7 +97,8 @@
 
                 <h2>iOS Sample</h2>
 
-                先集成 SDK Core，具体集成方法参阅<a href="intergrade.html">集成</a><br/> 假定 Test API 接受一个参数 String name，返回一个参数 String text。<br/>                假如 Test API 接收到的参数不合法，则返回错误 invalid name。
+                先集成 SDK Core，具体集成方法参阅<a href="intergrade.html">集成</a><br/> 假定 Test API 接受一个参数 String name，返回一个参数 String text。<br/>假如
+                Test API 接收到的参数不合法，则返回错误 invalid name。
 
                 <h3>1. 创建相关文件</h3>
                 New file -> 创建一个 NSObject 类，类继承 LGOModule。
@@ -250,6 +251,141 @@
                 在 WebView 中进行调用测试，具体测试过程不再叙述，可以下载 Sample Code 测试。<br/>
                 <a href="https://github.com/LEGO-SDK/PluginSample-iOS">https://github.com/LEGO-SDK/PluginSample-iOS</a>
 
+                <h2>Android Sample</h2>
+
+                先集成 SDK Core，具体集成方法参阅<a href="intergrade.html">集成</a><br/> 假定 Test API 接受一个参数 String name，返回一个参数 String text。<br/>假如
+                Test API 接收到的参数不合法，则返回错误 invalid name。
+
+                <h3>1. 创建相关文件</h3>
+                创建一个新的类 LGOTest.java 并继承 LGOModule。
+                <pre><code class="language-java">package com.opensource.legosdk.pluginsample;
+
+import com.lego.sdk.core.LGOModule;
+
+public class LGOTest extends LGOModule {
+}</code></pre>
+
+                <h3>2. 创建相关类</h3>
+
+                按照请求参数、返回值等信息，创建相关类。
+
+                <pre><code class="language-java">package com.opensource.legosdk.pluginsample;
+
+import com.lego.sdk.core.LGOModule;
+import com.lego.sdk.core.LGORequest;
+import com.lego.sdk.core.LGORequestable;
+import com.lego.sdk.core.LGOResponse;
+
+import org.json.JSONObject;
+
+public class LGOTest extends LGOModule {
+}
+
+class LGOTestRequest extends LGORequest {
+
+    String name;
+
+}
+
+class LGOTestResponse extends LGOResponse {
+
+    String text;
+
+    @Override
+    public JSONObject resData() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("text", text);
+        } catch (Exception e) {}
+        return obj;
+    }
+
+}
+
+class LGOTestOperation extends LGORequestable {
+
+}</code></pre>
+
+                <h3>3. 接收请求</h3>
+                添加 LGORequest 属性至 LGOTestOperation 类。继续完善 LGOTest 类，重写 build 方法。并根据参数合法性，返回对应 LGORequestable。
+
+                <pre><code class="language-java">package com.opensource.legosdk.pluginsample;
+
+import android.content.Context;
+
+import com.lego.sdk.core.LGOModule;
+import com.lego.sdk.core.LGORequest;
+import com.lego.sdk.core.LGORequestable;
+import com.lego.sdk.core.LGOResponse;
+
+import org.json.JSONObject;
+
+public class LGOTest extends LGOModule {
+
+    @Override
+    public LGORequestable build(JSONObject object, Context context) {
+        LGOTestRequest request = new LGOTestRequest();
+        try {
+            request.name = object.getString("name");
+        } catch (Exception e) {
+            return LGORequestable.reject("Test", -1, "invalid name.");
+        }
+        LGOTestOperation operation = new LGOTestOperation();
+        operation.request = request;
+        return operation;
+    }
+}
+
+class LGOTestRequest extends LGORequest {
+
+    String name;
+
+}
+
+class LGOTestResponse extends LGOResponse {
+
+    String text;
+
+    @Override
+    public JSONObject resData() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("text", text);
+        } catch (Exception e) {}
+        return obj;
+    }
+
+}
+
+class LGOTestOperation extends LGORequestable {
+
+    LGOTestRequest request;
+
+}</code></pre>
+
+                <h3>4. 处理请求</h3>
+                重写 LGOOperation 中的 request 方法，并返回 LGOTestResponse 实例。
+
+                <pre><code class="language-java">class LGOTestOperation extends LGORequestable {
+
+    LGOTestRequest request;
+
+    @Override
+    public LGOResponse requestSynchronize(LGOMessage message, Context context) {
+        LGOTestResponse response = new LGOTestResponse();
+        response.text = "Hello, " + request.name + ".";
+        return response;
+    }
+    
+}</code></pre>
+
+                <h3>5. 添加模块至 Core 中</h3>
+                在 LGORuntime.attach() 执行前，添加以下代码。
+                <pre><code class="language-java">LGOCore.sharedCore().modules.put("UED.Test", new LGOTest());</code></pre>
+
+                <h3>6. 测试</h3>
+                在 WebView 中进行调用测试，具体测试过程不再叙述，可以下载 Sample Code 测试。<br/>
+                <a href="https://github.com/LEGO-SDK/PluginSample-Android">https://github.com/LEGO-SDK/PluginSample-Android</a>
 
             </article>
         </div>
@@ -260,7 +396,7 @@
     <footer class="footer">
         <div class="container">
             <p>LEGO SDK 使用 Apache License, Version 2.0 协议开源</p>
-            <p>&copy; UED Team, YY.Inc 2016</p>
+            <p>&copy; UED Team, YY Inc. 2016</p>
         </div>
     </footer>
 
