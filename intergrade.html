@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>集成 - LEGO SDK</title>
+    <meta name="description" content="LEGO SDK 是一个轻量的 WebView 增强组件，借助 SDK，只需几行代码，即可集成数十种原生API。">
+    <meta name="keywords" content="WebView,SDK,LEGO,API,iOS,Android,UIWebView,WKWebView">
+    <meta name="author" content="YY.Inc UED">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.4/styles/monokai_sublime.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top site-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">LEGO SDK</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页</a>
+                    </li>
+                    <li><a href="intergrade.html">集成</a>
+                    </li>
+                    <li><a href="guide.html">入门指南</a>
+                    </li>
+                    <li><a href="docs/api/">API</a>
+                    </li>
+                    <li><a href="docs/writing-a-plugin/">扩展开发</a>
+                    </li>
+                    <li><a href="docs/faq/">常见问题</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+
+    <main class="docs-wrapper container">
+        <div class="row">
+            <article class="col-md-8 col-md-push-2 markdown-body" id="docs-content">
+                <h1>集成</h1>
+                SDK 可以拆分成两个独立的部分，JavascriptBridge 负责构建交互通道，Modules 则是官方提供的 API。<br/> 你可以独立集成 JavascriptBridge 而无需集成 Modules，接下来，你可以自行编写
+                API。
+                <br /> 你也可以只集成 Modules 中的某一个 API 而无需担心过多的 API 影响应用的稳定性。
+
+                <!--iOS-->
+                <h2>iOS</h2>
+
+                <h3>安装 CocoaPods</h3>
+                SDK 使用 CocoaPods 进行依赖管理，集成 SDK 前，你需要安装 CocoaPods。<br/>具体的使用说明请参照 <a href="https://guides.cocoapods.org/using/getting-started.html"
+                    target="_blank">https://guides.cocoapods.org/using/getting-started.html</a>。
+                <pre><code class="language-sh">$ sudo gem install cocoapods</code></pre>
+
+                <h3>全部集成</h3>
+                这种方式会将 JavascriptBridge 以及所有API集成到目标应用
+                <h4>1. 添加依赖配置到 Podfile</h4>
+                <pre><code class="language-rb">pod 'LEGO-SDK' </code></pre>
+                <h4>2. 更新依赖代码</h4>
+                <pre><code class="language-sh">$ pod update</code></pre>
+
+                <h3>单独集成</h3>
+                这种方式会将 JavascriptBridge 以及选定的 API 集成到目标应用
+                <h4>1. 选择需要集成的模块</h4>
+                <h6>JavascriptBridge</h6>
+                <button type="button" class="btn btn-primary iOSModule must" data-pod="pod 'LEGO-SDK/Core'">Core</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/AutoInject'">AutoInject</button>
+                <h6>Native</h6>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/Call'">Call</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/Check'">Check</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/DataModel'">DataModel</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/Device'">Device</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/FileManager'">FileManager</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/HTTPRequest'">HTTPRequest</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/Notification'">Notification</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/OpenURL'">OpenURL</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/Pasteboard'">Pasteboard</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/Native/UserDefaults'">UserDefaults</button>
+                <h6>UI</h6>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/ActionSheet'">ActionSheet</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/AlertView'">AlertView</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/AppFrame'">AppFrame</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/Bounce'">Bounce</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/ImagePreviewer'">ImagePreviewer</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/IndicatorView'">IndicatorView</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/ModalController'">ModalController</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/NavigationBar'">NavigationBar</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/NavigationController'">NavigationController</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/NavigationItem'">NavigationItem</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/ProgressView'">ProgressView</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/Refresh'">Refresh</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/StatusBar'">StatusBar</button>
+                <h6>WebView</h6>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/WebView/Pack'">Pack</button>
+                <h4>1. 添加以下配置到 Podfile</h4>
+                <pre><code class="language-rb" id="iOSPodFile">pod 'LEGO-SDK/Core' </code></pre>
+                <h4>2. 更新依赖代码</h4>
+                <pre><code class="language-sh">pod update</code></pre>
+
+                <!--Android-->
+                <h2>Android</h2>
+
+                <h3>Gradle</h3>
+                LEGO SDK 的 Gradle 仓库位于 JitPack，因此你需要在顶部目录 build.gradle 文件中添加仓库。
+                <pre><code class="language-rb">allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+} </code></pre>
+
+                <h3>单独集成</h3>
+                这种方式将使用 Gralde 集成 JavascriptBridge 以及选定的 API 集成到目标应用
+                <h4>1. 选择需要集成的模块</h4>
+                <h6>JavascriptBridge</h6>
+                <button type="button" class="btn btn-primary androidModule must" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:core:0.3.0'">Core</button>
+                <h6>Native</h6>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_call:0.3.0'">Call</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_check:0.3.0'">Check</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_datamodel:0.3.0'">DataModel</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_device:0.3.0'">Device</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_filemanager:0.3.0'">FileManager</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_httprequest:0.3.0'">HTTPRequest</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_notification:0.3.0'">Notification</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_open:0.3.0'">OpenURL / Intent</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_pasteboard:0.3.0'">Pasteboard</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_userdefaults:0.3.0'">UserDefaults</button>
+                <h6>UI</h6>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_actionsheet:0.3.0'">ActionSheet</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_alertview:0.3.0'">AlertView</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_appframe:0.3.0'">AppFrame</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_imagepreviewer:0.3.0'">ImagePreviewer</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_indicatorview:0.3.0'">IndicatorView</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_modalcontroller:0.3.0'">ModalController</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_navigationbar:0.3.0'">NavigationBar</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_navigationcontroller:0.3.0'">NavigationController</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_navigationitem:0.3.0'">NavigationItem</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_refresh:0.3.0'">Refresh</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_ui_statusbar:0.3.0'">StatusBar</button>
+                <h6>WebView</h6>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_webview_pack:0.3.0'">Pack</button>
+                <h4>1. 添加以下配置到 build.gradle</h4>
+                <pre><code class="language-rb" id="androidGradle">compile 'com.github.LEGO-SDK.LEGO-SDK-Android:core:0.3.0' </code></pre>
+                <h4>2. Sync</h4>
+                如果使用 Android Studio，IDE 会提示你同步依赖。
+
+            </article>
+        </div>
+
+    </main>
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>LEGO SDK 使用 Apache License, Version 2.0 协议开源</p>
+            <p>&copy; UED Team, YY.Inc 2016</p>
+        </div>
+    </footer>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://cdn.bootcss.com/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <script>
+
+        function resetPodfile() {
+            var contents = "";
+            $(".iOSModule.btn-primary").each(function(index, element) {
+                contents += $(element).data("pod") + "\n";
+            })
+            $("#iOSPodFile").html(contents);
+        }
+        $(".iOSModule").click(function(){
+            if ($(this).hasClass("must")) {
+                return;
+            }
+            $(this).toggleClass("btn-default");
+            $(this).toggleClass("btn-primary");
+            resetPodfile();
+        })
+
+        function resetGradle() {
+            var contents = "";
+            $(".androidModule.btn-primary").each(function(index, element) {
+                contents += $(element).data("gradle") + "\n";
+            })
+            $("#androidGradle").html(contents);
+        }
+        $(".androidModule").click(function(){
+            if ($(this).hasClass("must")) {
+                return;
+            }
+            $(this).toggleClass("btn-default");
+            $(this).toggleClass("btn-primary");
+            resetGradle();
+        })
+        
+    </script>
+
+</body>
+
+</html>

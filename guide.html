@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>入门指南 - LEGO SDK</title>
+    <meta name="description" content="LEGO SDK 是一个轻量的 WebView 增强组件，借助 SDK，只需几行代码，即可集成数十种原生API。">
+    <meta name="keywords" content="WebView,SDK,LEGO,API,iOS,Android,UIWebView,WKWebView">
+    <meta name="author" content="YY.Inc UED">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.4/styles/monokai_sublime.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="assets/style.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top site-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">LEGO SDK</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">首页</a>
+                    </li>
+                    <li><a href="intergrade.html">集成</a>
+                    </li>
+                    <li><a href="guide.html">入门指南</a>
+                    </li>
+                    <li><a href="docs/api/">API</a>
+                    </li>
+                    <li><a href="docs/writing-a-plugin/">扩展开发</a>
+                    </li>
+                    <li><a href="docs/faq/">常见问题</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+
+    <main class="docs-wrapper container">
+        <div class="row">
+            <article class="col-md-8 col-md-push-2 markdown-body" id="docs-content">
+                <h1>入门指南</h1>
+                SDK 是一座连接 WebView 与原生代码的桥梁，应用开发者可以使用 SDK 更方便、快速地为 WebView 开发者提供原生能力。<br/>
+
+                <!--原生开发者-->
+                <h2>针对原生开发者</h2>
+
+                <h3>介绍</h3>
+
+                如果前端开发者请求你添加一项原生功能，有几种方法可以做到。<br/><br/>
+
+                <b>* 使用 JavascriptCore 对 WebView 进行封装，需要自行构建相关协议。</b><br/>
+                <b>* 使用开源库 Cordavor 以及相关的 API。</b><br/>
+                <b>* 使用 NSURLProtocol 等外挂形式做到。</b><br/>
+
+                <br/> 但是，原生开发者在编写 Javascript 过程中，存在一定的学习成本。也因为 Javascript 变化多样，同时要兼顾跨平台的需求，导致自行封装的协议存在一定的局限性。<br/><br/> 有一种方法，可以让原生开发者解脱这种困境，那就是
+                LEGO SDK。<br/> LEGO SDK 集成简单，容易扩展，并且在不同平台之上拥有一致的调用方法。<br/> 要集成 SDK，对于 iOS 开发者来说，只需要使用 CocoaPods 即可，对于 Android
+                开发者来说，只需要使用 Gradle 即可。
+
+                <h3>示例</h3>
+
+                我们通过创建一个 Sample 应用，并通过 API 返回当前机器信息到 WebView，演示如何集成和使用 SDK。
+
+                <h4>iOS</h4>
+
+                <h5>1. 创建工程</h5>
+                创建一个新的 Xcode iOS 工程，初始化 Pods 并添加以下依赖至 Podfile，执行 pod install 安装依赖。
+                <pre><code class="language-rb">pod 'LEGO-SDK'</code></pre>
+
+                <h5>2. 添加 WebView</h5>
+                我们已经将整个 SDK 添加到工程里面了，现在我们打开 ViewController.m，添加一个全屏显示的 UIWebView。
+                <pre><code class="language-objc">@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:webView];
+}
+
+@end
+</code></pre>
+
+                <h5>3. 执行一段 Javascript</h5>
+                如无意外，在 Run 以后，你将看到一片白屏，因为，我们还没加载任何内容。现在，我们就让 WebView 加载一段 HTML 代码，代码里面会有一段 Javascript 代码， Javascript 代码会请求 SDK 返回当前设备型号。
+                <pre><code class="language-objc">@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:webView];
+    [self loadHTML:webView];
+}
+
+- (void)loadHTML:(UIWebView *)webView {
+    [webView loadHTMLString:@"&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(err, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;" baseURL:nil];
+}
+
+@end</code></pre>
+
+                <h5>4. 解读</h5>
+                我们创建了一个 WebView，这个 WebView 在创建后就会被注入 SDK 代码，同时，我们让 WebView 加载了一个 HTML 网页，我们使用以下代码请求 SDK 返回结果。
+                <pre><code class="language-js">JSMessage.newMessage('Native.Device').call(
+    function(err, res){
+        document.write('Device Name = ' + res.device.name)
+    }
+);</code></pre>
+                SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 Javascript 的回调。接下来的事情，也就交给 Javascript 去处理了。
+
+
+                <h4>Android</h4>
+                <h5>1. 创建工程</h5>
+                创建一个新的 Android Studio 工程，在 Project 顶级 build.gradle 中添加仓库。
+
+                <pre><code class="language-js">allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}</code></pre>
+
+                在应用 build.gradle 中添加依赖
+
+                <pre><code class="language-js">dependencies {
+    compile 'com.github.LEGO-SDK.LEGO-SDK-Android:core:0.3.0'
+    compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_device:0.3.0'
+}</code></pre>
+
+                <h5>2. 添加 WebView</h5>
+                我们已经将 Core 和 Device API 添加到工程里面了，现在我们打开 MainActivity，添加一个全屏显示的 UIWebView，并使其附着至 LGORuntime 中，其中 LGORuntime.debugEnabled(true)
+                是指开启调试模式，这样，我们便可以在 Chrome 中进行调试。
+                <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LGORuntime.debugEnabled(true);
+        WebView webView = new WebView(this);
+        LGORuntime.attach(webView);
+        LGOCore.sharedCore().whiteList.add("baidu.com");
+        setContentView(webView, new ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, 
+            ViewGroup.LayoutParams.MATCH_PARENT)
+        );
+    }
+}</code></pre>
+
+                <h5>3. 执行一段 Javascript</h5>
+                如无意外，在 Run 以后，你将看到一片白屏，因为，我们还没加载任何内容。现在，我们就让 WebView 加载一段 HTML 代码，代码里面会有一段 Javascript 代码， Javascript 代码会请求 SDK 返回当前设备型号。
+                <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        LGORuntime.debugEnabled(true);
+        WebView webView = new WebView(this);
+        LGORuntime.attach(webView);
+        webView.loadData("&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(err, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;", "text/html", "utf-8");
+        setContentView(webView, new ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, 
+            ViewGroup.LayoutParams.MATCH_PARENT)
+        );
+    }
+}</code></pre>
+
+                <h5>4. 解读</h5>
+                我们创建了一个 WebView，这个 WebView 在创建后，通过 LGORuntime.attach() 注入 SDK 代码，同时，我们让 WebView 加载了一个 HTML 网页，我们使用以下代码请求 SDK 返回结果。
+                <pre><code class="language-js">JSMessage.newMessage('Native.Device').call(
+    function(err, res){
+        document.write('Device Name = ' + res.device.name)
+    }
+);</code></pre>
+                SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 Javascript 的回调。接下来的事情，也就交给 Javascript 去处理了。
+
+                <h2>针对前端开发者</h2>
+
+                如果你是一名前端开发者， SDK 可以帮助你解决 W3C 不能解决的问题。众所周知，浏览器所能提供的能力并不多，前端开发者经常要使用各种奇怪的方案以面对各种奇葩需求。<br/><br/> SDK 为前端开发者提供一座桥梁，连接
+                Native，让 Native 为 WebView 服务。<br/> SDK 目前提供三大类的 API，这些 API 可以提供诸如设备信息、文件读写、配置读写、跨 WebView 通信、原生UI调用等功能。<br/><br/>                同时，SDK 的调用方法十分简单。
+
+                <h5>1. 初始化</h5>
+                在使用 SDK 前，先执行以下语句，以注入 Bridge 代码。
+                <pre><code class="language-js">window.JSBridge && eval(window.JSBridge.bridgeScript())</code></pre>
+
+                <h5>2. 创建请求</h5>
+                使用 JSMessage.newMessage 方法，创建一个请求，其中第一个参数是 API 名称，第二个参数是 API 请求参数。
+                <pre><code class="language-js">JSMessage.newMessage('Native.Device', {aKey: "aValue"});</code></pre>
+
+                <h5>3. 发起请求，并创建回调</h5>
+                使用 call 方法，发起请求，第一个参数是回调块，回调的第一个参数永远是 error，第二个参数则是 response 对象。
+                <pre><code class="language-js">JSMessage.newMessage('Native.Device', {aKey: "aValue"}).call(
+    function(err, res){
+        document.write('Device Name = ' + res.device.name)
+    }
+);</code></pre>
+
+                <h5>4. 发起同步请求</h5>
+                部分 API 是支持同步返回结果的，比如 Native.Device 和 Native.Check，使用这样的方法，获取同步结果。
+                <pre><code class="language-js">var res = JSMessage.newMessage('Native.Device', {aKey: "aValue"}).call();
+document.write('Device Name = ' + res.device.name);</code></pre>
+
+                <h5>5. 高级封装</h5>
+                以上是最基础的 API 调用方法，我们也提供更高级的封装，以便前端开发者可以更方便地调用官方API。<br/> 参见
+
+            </article>
+        </div>
+
+    </main>
+
+    <!-- Site footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>LEGO SDK 使用 Apache License, Version 2.0 协议开源</p>
+            <p>&copy; UED Team, YY.Inc 2016</p>
+        </div>
+    </footer>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://cdn.bootcss.com/highlight.js/8.4/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
