@@ -53,7 +53,7 @@
         data-chapter-title="NavigationController"
         data-filepath="doc/ui/NavigationController.md"
         data-basepath="../../../api"
-        data-revision="Wed Mar 15 2017 14:23:48 GMT+0800 (CST)"
+        data-revision="Tue Mar 21 2017 11:14:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -548,12 +548,18 @@ String  path;
 Bool    animated;
 String  title;
 Bool    statusBarHidden;
+STYLE   statusBarStyle;
 Bool    navigationBarHidden;
 Object  args;
 
 enum OPT {
     case &quot;push&quot;
     case &quot;pop&quot;
+}
+
+enum STYLE {
+    case &quot;default&quot;
+    case &quot;light&quot;
 }
 </code></pre><h2 id="responseparams">ResponseParams</h2>
 <p>-</p>

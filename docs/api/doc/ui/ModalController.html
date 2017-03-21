@@ -53,7 +53,7 @@
         data-chapter-title="ModalController"
         data-filepath="doc/ui/ModalController.md"
         data-basepath="../../../api"
-        data-revision="Wed Mar 15 2017 14:23:48 GMT+0800 (CST)"
+        data-revision="Tue Mar 21 2017 11:14:23 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -542,16 +542,19 @@
 <p>ModalController &#x4E0E; NavigationController &#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;ModalController &#x8DF3;&#x8F6C;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x662F;&#x4EE5;&#x6A21;&#x6001;&#x7684;&#x5F62;&#x5F0F;&#x5448;&#x73B0;&#x7684;&#x3002;</p>
 <p>&#x9ED8;&#x8BA4;&#x7684;&#x5448;&#x73B0;&#x52A8;&#x753B;&#x662F;&#x81EA;&#x4E0B;&#x800C;&#x4E0A;&#x3002;</p>
 <h2 id="requestparams">RequestParams</h2>
-<pre><code>OPT     opt;
-String  path;
-Bool    animated;
-String  title;
-Bool    statusBarHidden;
-Bool    navigationBarHidden;
-MType   modalType;
-Float   modalWidth;
-Float   modalHeight;
-Object  args;
+<pre><code>OPT     opt;                    // &#x64CD;&#x4F5C;
+String  path;                   // &#x8DEF;&#x5F84;&#xFF08;&#x7EDD;&#x5BF9;&#x6216;&#x76F8;&#x5BF9;&#xFF09;
+Bool    animated;               // &#x662F;&#x5426;&#x4EE5;&#x52A8;&#x753B;&#x5F62;&#x5F0F;&#x5448;&#x73B0;&#x4E0B;&#x4E00;&#x754C;&#x9762;
+String  title;                  // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x6807;&#x9898;
+Bool    statusBarHidden;        // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x662F;&#x5426;&#x9690;&#x85CF;&#x72B6;&#x6001;&#x680F;
+Bool    navigationBarHidden;    // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x662F;&#x5426;&#x9690;&#x85CF;&#x5BFC;&#x822A;&#x680F;
+Bool    clearWebView;           // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; WebView &#x80CC;&#x666F;&#x662F;&#x5426;&#x900F;&#x660E;
+Bool    clearMask;              // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; MaskView &#x80CC;&#x666F;&#x662F;&#x5426;&#x900F;&#x660E;
+Bool    nonMask;                // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; MaskView &#x662F;&#x5426;&#x53BB;&#x6389;
+MType   modalType;              // Modal &#x7684;&#x5448;&#x73B0;&#x6A21;&#x5F0F;
+Float   modalWidth;             // Modal &#x7684;&#x5BBD;
+Float   modalHeight;            // Modal &#x7684;&#x9AD8;
+Object  args;                   // &#x8981;&#x5411;&#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; WebView &#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;
 
 enum OPT {
     case &quot;present&quot;
