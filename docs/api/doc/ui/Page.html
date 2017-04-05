@@ -53,7 +53,7 @@
         data-chapter-title="Page"
         data-filepath="doc/ui/Page.md"
         data-basepath="../.."
-        data-revision="Wed Apr 05 2017 18:07:30 GMT+0800 (CST)"
+        data-revision="Wed Apr 05 2017 18:09:55 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -522,7 +522,22 @@ BOOL showsIndicator;
 <li>&#x5C06;&#x5BF9;&#x8C61;&#x7F6E;&#x4E8E; Array &#x5E76;&#x653E;&#x7F6E;&#x5230; requestParams.items &#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x6279;&#x91CF;&#x914D;&#x7F6E;&#x3002;</li>
 <li>urlPattern &#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x8868;&#x793A;&#xFF0C;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x9875;&#x9762;&#x3002;</li>
 </ul>
-
+<h2 id="sample">Sample</h2>
+<pre><code>var setting = JSMessage.newMessage();
+setting.moduleName = &quot;UI.Page&quot;;
+setting.requestParams = {
+    urlPattern: &quot;http://duowan.cn/*&quot;,
+    title: &quot;&#x591A;&#x73A9;&#x6E38;&#x620F;&quot;,
+    navigationBarHidden: false,
+    statusBarStyle: &quot;default&quot;,
+    statusBarHidden: false,
+    navigationBarBackgroundColor: &quot;#000000&quot;,
+    navigationBarTintColor: &quot;#ffffff&quot;,
+    navigationBarHidden: true,
+    backgroundColor: &quot;#f2f2f2&quot;,
+};
+setting.call();
+</code></pre>
                     
                     </section>
                 
