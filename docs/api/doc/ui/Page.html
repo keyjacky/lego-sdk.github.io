@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>ModalController | LEGO-SDK</title>
+        <title>Page | LEGO-SDK</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../doc/ui/Page.html" />
+    <link rel="next" href="../../doc/webview/index.html" />
     
     
-    <link rel="prev" href="../../doc/ui/NavigationItem.html" />
+    <link rel="prev" href="../../doc/ui/ModalController.html" />
     
 
         
@@ -49,9 +49,9 @@
         
         
     <div class="book"
-        data-level="2.7"
-        data-chapter-title="ModalController"
-        data-filepath="doc/ui/ModalController.md"
+        data-level="2.8"
+        data-chapter-title="Page"
+        data-filepath="doc/ui/Page.md"
         data-basepath="../.."
         data-revision="Wed Apr 05 2017 18:07:30 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -374,7 +374,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.7" data-path="doc/ui/ModalController.html">
+        <li class="chapter " data-level="2.7" data-path="doc/ui/ModalController.html">
             
                 
                     <a href="../../doc/ui/ModalController.html">
@@ -389,7 +389,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.8" data-path="doc/ui/Page.html">
+        <li class="chapter active" data-level="2.8" data-path="doc/ui/Page.html">
             
                 
                     <a href="../../doc/ui/Page.html">
@@ -478,51 +478,50 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="modalcontroller">ModalController</h1>
-<p>ModalController &#x4E0E; NavigationController &#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;ModalController &#x8DF3;&#x8F6C;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x662F;&#x4EE5;&#x6A21;&#x6001;&#x7684;&#x5F62;&#x5F0F;&#x5448;&#x73B0;&#x7684;&#x3002;</p>
-<p>&#x9ED8;&#x8BA4;&#x7684;&#x5448;&#x73B0;&#x52A8;&#x753B;&#x662F;&#x81EA;&#x4E0B;&#x800C;&#x4E0A;&#x3002;</p>
+                        <h1 id="page">Page</h1>
+<p>&#x53EF;&#x4F7F;&#x7528; Page API &#x4E3A;&#x6BCF;&#x4E00;&#x4E2A; Web &#x9875;&#x9762;&#x5B9A;&#x4E49;&#x300E;&#x6807;&#x9898;&#x6587;&#x672C;&#x300F;&#x3001;&#x300E;&#x72B6;&#x6001;&#x680F;&#x6837;&#x5F0F;&#x300F;&#x3001;&#x300E;&#x5BFC;&#x822A;&#x680F;&#x6837;&#x5F0F;&#x300F;&#x7B49;&#x3002;</p>
 <h2 id="requestparams">RequestParams</h2>
-<pre><code>OPT     opt;                    // &#x64CD;&#x4F5C;
-String  path;                   // &#x8DEF;&#x5F84;&#xFF08;&#x7EDD;&#x5BF9;&#x6216;&#x76F8;&#x5BF9;&#xFF09;
-Bool    animated;               // &#x662F;&#x5426;&#x4EE5;&#x52A8;&#x753B;&#x5F62;&#x5F0F;&#x5448;&#x73B0;&#x4E0B;&#x4E00;&#x754C;&#x9762;
-Bool    clearWebView;           // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; WebView &#x80CC;&#x666F;&#x662F;&#x5426;&#x900F;&#x660E;
-Bool    clearMask;              // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; MaskView &#x80CC;&#x666F;&#x662F;&#x5426;&#x900F;&#x660E;
-Bool    nonMask;                // &#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; MaskView &#x662F;&#x5426;&#x53BB;&#x6389;
-MType   modalType;              // Modal &#x7684;&#x5448;&#x73B0;&#x6A21;&#x5F0F;
-Float   modalWidth;             // Modal &#x7684;&#x5BBD;
-Float   modalHeight;            // Modal &#x7684;&#x9AD8;
-Object  args;                   // &#x8981;&#x5411;&#x4E0B;&#x4E00;&#x754C;&#x9762;&#x7684; WebView &#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;
+<p>&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x81F3; requestParams &#x5B9A;&#x4E49;&#x5355;&#x4E2A;&#x9875;&#x9762;&#x7684;&#x5C5E;&#x6027;</p>
+<pre><code>
+// &#x7528;&#x4E8E;&#x5339;&#x914D;&#x6307;&#x5B9A;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x652F;&#x6301;&#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3002;
+String urlPattern;                      
 
-enum OPT {
-    case &quot;present&quot;
-    case &quot;dismiss&quot;
-}
+// &#x53EF;&#x9009;&#xFF0C;&#x7684;&#x6807;&#x9898;
+String title;
 
-enum LGOModalType {
-    Normal = 0,     // &#x6A21;&#x6001;&#x7A97;&#x53E3;&#x94FA;&#x6EE1;&#x5168;&#x5C4F;
-    Center = 1,     // &#x6A21;&#x6001;&#x7A97;&#x53E3;&#x5C45;&#x4E2D;
-    Top = 2,        // &#x5C45;&#x4E0A;
-    Left = 3,       // &#x5C45;&#x5DE6;
-    Bottom = 4,     // &#x5C45;&#x4E0B;
-    Right = 5,      // &#x5C45;&#x53F3;
-};
-</code></pre><h2 id="responseparams">ResponseParams</h2>
-<p>-</p>
-<h2 id="example">Example</h2>
-<pre><code class="lang-javascript"><span class="hljs-comment">// #1 &#x5C06; https://www.google.com.hk/ &#x4F5C;&#x4E3A;&#x6A21;&#x6001;&#x9875;&#x9762;&#x5F39;&#x5165;&#x3002;</span>
-JSMessage.newMessage(<span class="hljs-string">&quot;UI.ModalController&quot;</span>, {
-    opt: <span class="hljs-string">&quot;present&quot;</span>,
-    path: <span class="hljs-string">&quot;https://www.google.com.hk/&quot;</span>,
-    args: {
-        customID: <span class="hljs-number">8888</span>,
-    }
-}).call(<span class="hljs-literal">null</span>)
+// &#x53EF;&#x9009;&#xFF0C;&#x7684;&#x80CC;&#x666F;&#x8272;&#xFF0C;&#x9875;&#x9762;&#x56DE;&#x8C03;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528; hex &#x65B9;&#x5F0F;&#x4F20;&#x5165;&#xFF0C;&#x5982; &quot;#000000&quot;(RGB)&#xFF0C;&#x6216; &quot;#00000000&quot;(ARGB)
+String backgroundColor;
 
-<span class="hljs-comment">// #2 &#x9000;&#x51FA;&#x5F53;&#x524D;&#x9875;&#x9762;</span>
-JSMessage.newMessage(<span class="hljs-string">&quot;UI.ModalController&quot;</span>, {
-    opt: <span class="hljs-string">&quot;dismiss&quot;</span>
-}).call(<span class="hljs-literal">null</span>)
-</code></pre>
+// &#x53EF;&#x9009;&#xFF0C;&#x72B6;&#x6001;&#x680F;&#x662F;&#x5426;&#x9690;&#x85CF;
+BOOL statusBarHidden;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x72B6;&#x6001;&#x680F;&#x7684;&#x6837;&#x5F0F;&#xFF0C;&quot;light&quot; &#x4EE3;&#x8868;&#x767D;&#x8272;, &quot;default&quot; &#x4EE3;&#x8868;&#x9ED1;&#x8272; (iOS only)
+String statusBarStyle;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x5BFC;&#x822A;&#x680F;&#x662F;&#x5426;&#x9690;&#x85CF;
+BOOL navigationBarHidden;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x5BFC;&#x822A;&#x680F;&#x5206;&#x9694;&#x7EBF;&#x662F;&#x5426;&#x9690;&#x85CF;
+BOOL navigationBarSeparatorHidden;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x5BFC;&#x822A;&#x680F;&#x80CC;&#x666F;&#x8272;&#xFF0C;&#x4F7F;&#x7528; hex &#x65B9;&#x5F0F;&#x4F20;&#x5165;&#xFF0C;&#x5982; &quot;#000000&quot;(RGB)&#xFF0C;&#x6216; &quot;#00000000&quot;(ARGB)
+String navigationBarBackgroundColor;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x5BFC;&#x822A;&#x680F;&#x6587;&#x5B57;&#x3001;&#x56FE;&#x6807;&#x6E32;&#x67D3;&#x8272;&#xFF0C;&#x4F7F;&#x7528; hex &#x65B9;&#x5F0F;&#x4F20;&#x5165;&#xFF0C;&#x5982; &quot;#000000&quot;(RGB)&#xFF0C;&#x6216; &quot;#00000000&quot;(ARGB)
+String navigationBarTintColor;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x662F;&#x5426;&#x5E03;&#x5C40;&#x81F3;&#x6700;&#x9876;&#x7AEF;
+BOOL fullScreenContent;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x56DE;&#x5F39;&#x6548;&#x679C; (iOS only)
+BOOL allowBounce;
+
+// &#x53EF;&#x9009;&#xFF0C;&#x662F;&#x5426;&#x663E;&#x793A;&#x6EDA;&#x52A8;&#x6761;
+BOOL showsIndicator;
+</code></pre><ul>
+<li>&#x5C06;&#x5BF9;&#x8C61;&#x7F6E;&#x4E8E; Array &#x5E76;&#x653E;&#x7F6E;&#x5230; requestParams.items &#x5B57;&#x6BB5;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x6279;&#x91CF;&#x914D;&#x7F6E;&#x3002;</li>
+<li>urlPattern &#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x8868;&#x793A;&#xFF0C;&#x8BBE;&#x7F6E;&#x5F53;&#x524D;&#x9875;&#x9762;&#x3002;</li>
+</ul>
 
                     
                     </section>
@@ -533,10 +532,10 @@ JSMessage.newMessage(<span class="hljs-string">&quot;UI.ModalController&quot;</s
         </div>
 
         
-        <a href="../../doc/ui/NavigationItem.html" class="navigation navigation-prev " aria-label="Previous page: NavigationItem"><i class="fa fa-angle-left"></i></a>
+        <a href="../../doc/ui/ModalController.html" class="navigation navigation-prev " aria-label="Previous page: ModalController"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../doc/ui/Page.html" class="navigation navigation-next " aria-label="Next page: Page"><i class="fa fa-angle-right"></i></a>
+        <a href="../../doc/webview/index.html" class="navigation navigation-next " aria-label="Next page: WebView"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
