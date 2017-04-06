@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>NavigationItem | LEGO-SDK</title>
+        <title>Picker | LEGO-SDK</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../doc/ui/ModalController.html" />
+    <link rel="next" href="../../doc/webview/index.html" />
     
     
-    <link rel="prev" href="../../doc/ui/NavigationController.html" />
+    <link rel="prev" href="../../doc/ui/Page.html" />
     
 
         
@@ -49,9 +49,9 @@
         
         
     <div class="book"
-        data-level="2.6"
-        data-chapter-title="NavigationItem"
-        data-filepath="doc/ui/NavigationItem.md"
+        data-level="2.9"
+        data-chapter-title="Picker"
+        data-filepath="doc/ui/Picker.md"
         data-basepath="../.."
         data-revision="Thu Apr 06 2017 14:29:07 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -359,7 +359,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.6" data-path="doc/ui/NavigationItem.html">
+        <li class="chapter " data-level="2.6" data-path="doc/ui/NavigationItem.html">
             
                 
                     <a href="../../doc/ui/NavigationItem.html">
@@ -404,7 +404,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.9" data-path="doc/ui/Picker.html">
+        <li class="chapter active" data-level="2.9" data-path="doc/ui/Picker.html">
             
                 
                     <a href="../../doc/ui/Picker.html">
@@ -493,35 +493,33 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="navigationitem">NavigationItem</h1>
-<p>&#x4F7F;&#x7528; NavigationItem &#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5E94;&#x7528;&#x9875;&#x9762;&#x5BFC;&#x822A;&#x680F;&#x5DE6;&#x4FA7;&#x6309;&#x94AE;&#x3001;&#x53F3;&#x4FA7;&#x6309;&#x94AE;&#x4EE5;&#x53CA;&#x9875;&#x9762;&#x6807;&#x9898;&#x3002;</p>
-<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; NavigationItem &#x6A21;&#x5757;&#x8BBE;&#x7F6E;&#x4E0B;&#x4E00;&#x9875;&#x9762;&#x7684;&#x8FD4;&#x56DE;&#x6309;&#x94AE;&#x6807;&#x9898;&#x3002;</p>
-<p>&#x5176;&#x4E2D;&#x5DE6;&#x4FA7;&#x6309;&#x94AE;&#x3001;&#x53F3;&#x4FA7;&#x6309;&#x94AE;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x4E3A;&#x6587;&#x672C;&#x6309;&#x94AE;&#x6216;&#x8005;&#x56FE;&#x6807;&#x6309;&#x94AE;&#x3002;</p>
+                        <h1 id="picker">Picker</h1>
+<p>Picker &#x7EC4;&#x4EF6;&#x4E3A; WebView &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x591A;&#x529F;&#x80FD;&#x7684;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x8BE5;&#x9009;&#x62E9;&#x5668;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8C03;&#x7528;&#x539F;&#x751F;&#x7684; UIPickerView &#x548C; Android Picker &#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x4E3A; Picker &#x5B9A;&#x4E49;&#x6807;&#x9898;&#x3001;&#x591A;&#x5217;&#x9009;&#x62E9;&#x503C;&#x3001;&#x6BCF;&#x5217;&#x7684;&#x6807;&#x9898;&#x7B49;&#x5C5E;&#x6027;&#x3002;</p>
 <h2 id="requestparams">RequestParams</h2>
-<pre><code>String title;
-String leftItem;
-String rightItem;
-String backItem;
-</code></pre><h2 id="responseparams">ResponseParams</h2>
-<pre><code>Bool leftTapped;
-Bool rightTapped;
-</code></pre><h2 id="example">Example</h2>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x9875;&#x9762;&#x6807;&#x9898;&#x3002;</span>
-JSMessage.newMessage(<span class="hljs-string">&quot;UI.NavigationItem&quot;</span>, {
-    title: <span class="hljs-string">&quot;Hello&quot;</span>
-}).call(<span class="hljs-literal">null</span>)
-
-<span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x53F3;&#x4FA7;&#x6309;&#x94AE;&#x4E3A;&#x56FE;&#x6807;&#x6309;&#x94AE;&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x53C2;&#x6570; rightItem&#xFF0C;&#x5E76;&#x4E3A;&#x5176;&#x63D0;&#x4F9B;&#x56FE;&#x6807;&#x5730;&#x5740;&#x6216;&#x8005;&#x6587;&#x672C;&#x3002;</span>
-JSMessage.newMessage(<span class="hljs-string">&quot;UI.NavigationItem&quot;</span>, {
-    rightItem: <span class="hljs-string">&quot;https://raw.githubusercontent.com/Redtory/Product-Roadmap/master/barbuttonicon_addfriends%403x.png&quot;</span>
-}).call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">meta, result</span>)</span>{
-    <span class="hljs-keyword">if</span> (meta.error){ <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(error); }
-    <span class="hljs-keyword">if</span> (result.rightTapped) {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Done button tapped.&quot;</span>)
-    }
-})
+<p>String      title            - &#x9009;&#x62E9;&#x5668;&#x9876;&#x90E8;&#x6807;&#x9898;
+String[]    columnTitles     - &#x5404;&#x5217;&#x7684;&#x6807;&#x9898;
+String[][]  columns          - &#x5404;&#x5217;&#x7684;&#x503C;&#x6570;&#x7EC4;
+String[]    defaultValues    - &#x5404;&#x5217;&#x7684;&#x9ED8;&#x8BA4;&#x503C;</p>
+<h2 id="responseparams">ResponseParams</h2>
+<p>String[]    selectedValues   - &#x5404;&#x5217;&#x7684;&#x9009;&#x4E2D;&#x503C;</p>
+<h2 id="sample">Sample</h2>
+<pre><code>var message = JSMessage.newMessage()
+message.moduleName = &quot;UI.Picker&quot;
+message.requestParams = {
+    title: &quot;&#x4F1A;&#x8BAE;&#x65F6;&#x95F4;&quot;,
+    columns: [
+        [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;],
+        [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;],
+        [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;],
+    ],
+    columnTitles: [&quot;&#x65E5;&#x671F;&quot;, &quot;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&quot;, &quot;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&quot;],
+    defaultValues: [&quot;C&quot;, &quot;E&quot;, &quot;H&quot;],
+}
+message.call(function(meta, res){
+                console.log(res.selectedValues);
+                });
 </code></pre>
-
                     
                     </section>
                 
@@ -531,10 +529,10 @@ JSMessage.newMessage(<span class="hljs-string">&quot;UI.NavigationItem&quot;</sp
         </div>
 
         
-        <a href="../../doc/ui/NavigationController.html" class="navigation navigation-prev " aria-label="Previous page: NavigationController"><i class="fa fa-angle-left"></i></a>
+        <a href="../../doc/ui/Page.html" class="navigation navigation-prev " aria-label="Previous page: Page"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../doc/ui/ModalController.html" class="navigation navigation-next " aria-label="Next page: ModalController"><i class="fa fa-angle-right"></i></a>
+        <a href="../../doc/webview/index.html" class="navigation navigation-next " aria-label="Next page: WebView"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
