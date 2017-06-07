@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>WebView | LEGO-SDK</title>
+        <title>PageState | LEGO-SDK</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../doc/webview/pack.html" />
+    <link rel="next" href="../../doc/ui/Picker.html" />
     
     
-    <link rel="prev" href="../../doc/ui/Toast.html" />
+    <link rel="prev" href="../../doc/ui/Page.html" />
     
 
         
@@ -49,9 +49,9 @@
         
         
     <div class="book"
-        data-level="3"
-        data-chapter-title="WebView"
-        data-filepath="doc/webview/README.md"
+        data-level="2.9"
+        data-chapter-title="PageState"
+        data-filepath="doc/ui/PageState.md"
         data-basepath="../.."
         data-revision="Wed Jun 07 2017 12:13:29 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -404,7 +404,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.9" data-path="doc/ui/PageState.html">
+        <li class="chapter active" data-level="2.9" data-path="doc/ui/PageState.html">
             
                 
                     <a href="../../doc/ui/PageState.html">
@@ -454,7 +454,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3" data-path="doc/webview/index.html">
+        <li class="chapter " data-level="3" data-path="doc/webview/index.html">
             
                 
                     <a href="../../doc/webview/index.html">
@@ -523,10 +523,29 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="webview">WebView</h1>
-<ul>
-<li>pack - webview&#x89E3;&#x538B;zip&#x6587;&#x4EF6;&#x5E76;&#x6253;&#x5F00;&#x91CC;&#x9762;&#x7684;index.html&#x3002; (Universal)</li>
-</ul>
+                        <h1 id="pagestate">PageState</h1>
+<p>&#x4F7F;&#x7528; PageState &#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x9875;&#x9762;&#x3001;&#x5E94;&#x7528;&#x7684;&#x5DE5;&#x4F5C;&#x72B6;&#x6001;&#x3002;</p>
+<h2 id="requestparams">RequestParams</h2>
+<p>-</p>
+<h2 id="responseparams">ResponseParams</h2>
+<pre><code>
+/**
+ * &quot;appear&quot;     - &#x5F53;&#x524D;&#x9875;&#x9762;&#x6B63;&#x5728;&#x663E;&#x793A;
+ * &quot;disappear&quot;  - &#x5F53;&#x524D;&#x9875;&#x9762;&#x88AB;&#x9690;&#x85CF;
+ * &quot;active&quot;     - &#x5F53;&#x524D;&#x5E94;&#x7528;&#x6B63;&#x5728;&#x6D3B;&#x52A8; 
+ * &quot;inactive&quot;   - &#x5F53;&#x524D;&#x5E94;&#x7528;&#x6B63;&#x5728;&#x540E;&#x53F0;
+ */
+string currentState;
+</code></pre><h2 id="example">Example</h2>
+<pre><code class="lang-javascript">JSMessage.newMessage(<span class="hljs-string">&quot;UI.Toast&quot;</span>, {
+    opt: <span class="hljs-string">&quot;show&quot;</span>,
+    style: <span class="hljs-string">&quot;loading&quot;</span>,
+    title: <span class="hljs-string">&quot;&#x52A0;&#x8F7D;&#x4E2D;&quot;</span>,
+    timeout: <span class="hljs-number">10</span>,
+}).call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">meta, result</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(result.currentState);
+});
+</code></pre>
 
                     
                     </section>
@@ -537,10 +556,10 @@
         </div>
 
         
-        <a href="../../doc/ui/Toast.html" class="navigation navigation-prev " aria-label="Previous page: Toast"><i class="fa fa-angle-left"></i></a>
+        <a href="../../doc/ui/Page.html" class="navigation navigation-prev " aria-label="Previous page: Page"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../doc/webview/pack.html" class="navigation navigation-next " aria-label="Next page: Pack"><i class="fa fa-angle-right"></i></a>
+        <a href="../../doc/ui/Picker.html" class="navigation navigation-next " aria-label="Next page: Picker"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
