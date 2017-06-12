@@ -53,7 +53,7 @@
         data-chapter-title="Picker"
         data-filepath="doc/ui/Picker.md"
         data-basepath="../.."
-        data-revision="Wed Jun 07 2017 12:16:40 GMT+0800 (CST)"
+        data-revision="Mon Jun 12 2017 18:22:54 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -526,11 +526,20 @@
                         <h1 id="picker">Picker</h1>
 <p>Picker &#x7EC4;&#x4EF6;&#x4E3A; WebView &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x591A;&#x529F;&#x80FD;&#x7684;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x8BE5;&#x9009;&#x62E9;&#x5668;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8C03;&#x7528;&#x539F;&#x751F;&#x7684; UIPickerView &#x548C; Android Picker &#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
 <p>&#x4F60;&#x53EF;&#x4EE5;&#x4E3A; Picker &#x5B9A;&#x4E49;&#x6807;&#x9898;&#x3001;&#x591A;&#x5217;&#x9009;&#x62E9;&#x503C;&#x3001;&#x6BCF;&#x5217;&#x7684;&#x6807;&#x9898;&#x7B49;&#x5C5E;&#x6027;&#x3002;</p>
+<ul>
+<li>&#x6700;&#x591A;&#x652F;&#x6301;&#x4E09;&#x5217;&#x7684;&#x6570;&#x636E;</li>
+</ul>
 <h2 id="requestparams">RequestParams</h2>
 <p>String      title            - &#x9009;&#x62E9;&#x5668;&#x9876;&#x90E8;&#x6807;&#x9898;</p>
 <p>String[]    columnTitles     - &#x5404;&#x5217;&#x7684;&#x6807;&#x9898;</p>
 <p>String[][]  columns          - &#x5404;&#x5217;&#x7684;&#x503C;&#x6570;&#x7EC4;</p>
 <p>String[]    defaultValues    - &#x5404;&#x5217;&#x7684;&#x9ED8;&#x8BA4;&#x503C;</p>
+<h2 id="&#x8054;&#x52A8;-picker-&#x7684;-requestparams">&#x8054;&#x52A8; Picker &#x7684; RequestParams</h2>
+<p>Boolean     isColumnsRelated - &#x8BBE;&#x4E3A; true &#x65F6;&#xFF0C;&#x5F00;&#x542F;&#x8054;&#x52A8; Picker
+Item[]      columns          - &#x6811;&#x72B6;&#x6570;&#x503C;</p>
+<p>Item = Object {
+    title: &quot;&#x6807;&#x9898;&quot;, 
+    item: Item[],<br>}</p>
 <h2 id="responseparams">ResponseParams</h2>
 <p>String[]    selectedValues   - &#x5404;&#x5217;&#x7684;&#x9009;&#x4E2D;&#x503C;</p>
 <h2 id="sample">Sample</h2>
@@ -549,6 +558,80 @@ message.requestParams = {
 message.call(function(meta, res){
                 console.log(res.selectedValues);
                 });
+</code></pre><h2 id="sample-&#x8054;&#x52A8;">Sample &#x8054;&#x52A8;</h2>
+<pre><code>var message = JSMessage.newMessage()
+message.moduleName = &quot;UI.Picker&quot;
+message.requestParams = {
+    isColumnsRelated: true,
+    title: &quot;&#x5730;&#x533A;&quot;,
+    columns: [
+        {
+            &quot;title&quot;: &quot;&#x5E7F;&#x4E1C;&#x7701;&quot;,
+            &quot;item&quot;: [
+                {
+                    &quot;title&quot;: &quot;&#x5E7F;&#x5DDE;&#x5E02;&quot;,
+                    &quot;item&quot;: [
+                        {
+                            &quot;title&quot;: &quot;&#x5929;&#x6CB3;&#x533A;&quot;,
+                        },
+                        {
+                            &quot;title&quot;: &quot;&#x8D8A;&#x79C0;&#x533A;&quot;,
+                        },
+                        {
+                            &quot;title&quot;: &quot;&#x8354;&#x6E7E;&#x533A;&quot;,
+                        },
+                        {
+                            &quot;title&quot;: &quot;&#x5927;&#x5B66;&#x57CE;&quot;,
+                        }
+                    ]
+                },
+                {
+                    &quot;title&quot;: &quot;&#x6C55;&#x5934;&#x5E02;&quot;,
+                    &quot;item&quot;: [
+                        {
+                            &quot;title&quot;: &quot;&#x6F84;&#x6D77;&#x533A;&quot;,
+                        },
+                        {
+                            &quot;title&quot;: &quot;&#x6F6E;&#x5B89;&#x533A;&quot;,
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            &quot;title&quot;: &quot;&#x6D77;&#x5357;&#x7701;&quot;,
+            &quot;item&quot;: [
+                {
+                    &quot;title&quot;: &quot;&#x6D77;&#x53E3;&#x5E02;&quot;,
+                    &quot;item&quot;: [
+                        {
+                            &quot;title&quot;: &quot;&#x7F8E;&#x5170;&#x533A;&quot;,
+                        },
+                        {
+                            &quot;title&quot;: &quot;&#x79C0;&#x82F1;&#x6E2F;&quot;,
+                        }
+                    ]
+                },
+                {
+                    &quot;title&quot;: &quot;&#x4E09;&#x4E9A;&#x5E02;&quot;,
+                    &quot;item&quot;: [
+                        {
+                            &quot;title&quot;: &quot;&#x5E02;&#x533A;&quot;,
+                        },
+                        {
+                            &quot;title&quot;: &quot;&#x4E9A;&#x9F99;&#x6E7E;&quot;,
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    columnTitles: [&quot;&#x7701;&quot;, &quot;&#x5E02;&quot;, &quot;&#x533A;&quot;],
+    defaultValues: [&quot;&#x5E7F;&#x4E1C;&#x7701;&quot;, &quot;&#x6C55;&#x5934;&#x5E02;&quot;, &quot;&#x6F6E;&#x5B89;&#x533A;&quot;],
+}
+message.call(function (meta, res) {
+    JSConsole.log(res.selectedValues);
+});
 </code></pre>
                     
                     </section>
