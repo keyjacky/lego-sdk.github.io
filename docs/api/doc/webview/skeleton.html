@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Check | LEGO-SDK</title>
+        <title>Skeleton | LEGO-SDK</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../../doc/native/DataModel.html" />
     
-    
-    <link rel="prev" href="../../doc/native/Call.html" />
+    <link rel="prev" href="../../doc/webview/pack.html" />
     
 
         
@@ -49,9 +47,9 @@
         
         
     <div class="book"
-        data-level="1.2"
-        data-chapter-title="Check"
-        data-filepath="doc/native/Check.md"
+        data-level="3.2"
+        data-chapter-title="Skeleton"
+        data-filepath="doc/webview/skeleton.md"
         data-basepath="../.."
         data-revision="Wed Jul 26 2017 12:11:12 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -113,7 +111,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="doc/native/Check.html">
+        <li class="chapter " data-level="1.2" data-path="doc/native/Check.html">
             
                 
                     <a href="../../doc/native/Check.html">
@@ -485,7 +483,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="doc/webview/skeleton.html">
+        <li class="chapter active" data-level="3.2" data-path="doc/webview/skeleton.html">
             
                 
                     <a href="../../doc/webview/skeleton.html">
@@ -538,28 +536,45 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="check">Check</h1>
-<p>&#x4F7F;&#x7528; Check API &#x68C0;&#x67E5;&#x5F53;&#x524D;SDK&#x7248;&#x672C;&#x4EE5;&#x53CA;&#x5F53;&#x524D;SDK&#x53EF;&#x7528;&#x7684;&#x6A21;&#x5757;&#x3002;</p>
-<p>&#x652F;&#x6301;&#x540C;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x3002;</p>
-<h2 id="requestparams">RequestParams</h2>
-<p>-</p>
-<h2 id="responseparams">ResponseParams</h2>
-<pre><code>String SDKVersion;
-RESULT checkResult;
+                        <h1 id="skeleton">Skeleton</h1>
+<p>&#x4F7F;&#x7528; WebView.Skeleton &#x53EF;&#x4EE5;&#x5728;&#x907F;&#x514D; WebView &#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;&#x4E2D;&#x51FA;&#x73B0;&#x767D;&#x5C4F;&#x7684;&#x5C34;&#x5C2C;&#x60C5;&#x51B5;&#x3002;</p>
+<p>WebView &#x52A0;&#x8F7D;&#x6210;&#x529F;&#x524D;&#xFF0C;&#x4E00;&#x4E2A; skeleton.html &#x7684;&#x9875;&#x9762;&#x4F1A;&#x88AB;&#x4F18;&#x5148;&#x52A0;&#x8F7D;&#xFF0C;&#x5E76;&#x663E;&#x793A;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x3002;</p>
+<p>&#x5728;&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;skeleton.html &#x4F1A;&#x88AB;&#x9690;&#x85CF;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x63A7;&#x5236; skeleton.html &#x9690;&#x85CF;&#x7684;&#x65F6;&#x673A;&#x3002;</p>
+<h2 id="skeletonhtml">skeleton.html</h2>
+<p>skeleton.html &#x5E94;&#x8BE5;&#x88AB;&#x653E;&#x7F6E;&#x5728; iOS &#x7684;&#x5E94;&#x7528;&#x5305;&#x4E2D;&#xFF0C;Android &#x7684; assets &#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<p>skeleton.html &#x6CA1;&#x6709;&#x4EFB;&#x4F55; LEGO-SDK &#x7684;&#x6267;&#x884C;&#x6743;&#x9650;&#x3002;</p>
+<p>skeleton.html &#x6A21;&#x677F;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
 
-RESULT {
-    (String)moduleName: (Int)moduleVersion;
-}
-</code></pre><h2 id="example">Example</h2>
-<pre><code>// &#x540C;&#x6B65;&#x8C03;&#x7528;
-var syncResult = JSMessage.newMessage(&quot;Native.Check&quot;).call()
-console.log(syncResult)
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
 
-// &#x5F02;&#x6B65;&#x8C03;&#x7528;
-JSMessage.newMessage(&quot;Native.Check&quot;).call(function(meta, result) {
-    if (meta.error){ return console.error(error); }
-    console.log(result.checkResult[&apos;Native.Check&apos;])
-})
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">canHandleRequest</span><span class="hljs-params">(url)</span> </span>{
+        <span class="hljs-comment">// &#x901A;&#x8FC7; url &#x6765;&#x5224;&#x65AD;&#xFF0C;&#x8FD4;&#x56DE; true &#x4EE3;&#x8868;&#xFF0C;skeleton.html &#x5E94;&#x8BE5;&#x51FA;&#x73B0;&#x5728;&#x767D;&#x5C4F;&#x9636;&#x6BB5;&#x3002;</span>
+        <span class="hljs-keyword">if</span> (url.startsWith(<span class="hljs-string">&apos;http://duowan.cn/&apos;</span>)) {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRequest</span><span class="hljs-params">(url)</span> </span>{
+        <span class="hljs-comment">// &#x54CD;&#x5E94; url &#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x66F4;&#x6539; skeleton.html &#x5185;&#x5BB9;&#x3002;</span>
+        <span class="hljs-comment">// &#x8FD4;&#x56DE; true &#x4EE3;&#x8868;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x81EA;&#x884C;&#x63A7;&#x5236; skeleton.html &#x6D88;&#x5931;&#x7684;&#x65F6;&#x673A;&#x3002;</span>
+        <span class="hljs-comment">// &#x9ED8;&#x8BA4;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE; false&#xFF0C;&#x4EE3;&#x8868; WebView &#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;skeleton.html &#x81EA;&#x52A8;&#x6D88;&#x5931;&#x3002;</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<h2 id="dismiss">Dismiss</h2>
+<p>&#x5F53; <code>handleRequest</code> &#x8FD4;&#x56DE; false &#x65F6;&#xFF0C;skeleton.html &#x4F1A;&#x5728; WebView &#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#x6D88;&#x5931;&#x3002;</p>
+<p>&#x5426;&#x5219;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B; API &#x63A7;&#x5236; skeleton.html &#x7684;&#x6D88;&#x5931;&#x3002;</p>
+<pre><code>JSMessage.newMessage(&quot;WebView.Skeleton&quot;, {opt: &quot;dismiss&quot;}).call(null);
 </code></pre>
                     
                     </section>
@@ -570,10 +585,8 @@ JSMessage.newMessage(&quot;Native.Check&quot;).call(function(meta, result) {
         </div>
 
         
-        <a href="../../doc/native/Call.html" class="navigation navigation-prev " aria-label="Previous page: Call"><i class="fa fa-angle-left"></i></a>
+        <a href="../../doc/webview/pack.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Pack"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../../doc/native/DataModel.html" class="navigation navigation-next " aria-label="Next page: DataModel"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
