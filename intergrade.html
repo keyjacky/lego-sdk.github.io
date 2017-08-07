@@ -109,6 +109,7 @@
                 <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/UI/Toast'">Toast</button>
                 <h6>WebView</h6>
                 <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/WebView/Pack'">Pack</button>
+                <button type="button" class="btn btn-default iOSModule" data-pod="pod 'LEGO-SDK/API/WebView/Skeleton'">Skeleton</button>
                 <h4>1. 添加以下配置到 Podfile</h4>
                 <pre><code class="language-rb" id="iOSPodFile">pod 'LEGO-SDK/Core' </code></pre>
                 <h4>2. 更新依赖代码</h4>
@@ -130,32 +131,33 @@
                 这种方式将使用 Gralde 集成 JavascriptBridge 以及选定的 API 集成到目标应用
                 <h4>1. 选择需要集成的模块</h4>
                 <h6>JavascriptBridge</h6>
-                <button type="button" class="btn btn-primary androidModule must" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:core:0.4.3'">Core</button>
+                <button type="button" class="btn btn-primary androidModule must" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:core:0.5.0'">Core</button>
                 <h6>Native</h6>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.check:0.4.3'">Check</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.device:0.4.3'">Device</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.filemanager:0.4.3'">FileManager</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.httprequest:0.4.3'">HTTPRequest</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.notification:0.4.3'">Notification</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.openintent:0.4.3'">OpenURL / Intent</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.pasteboard:0.4.3'">Pasteboard</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.userdefaults:0.4.3'">UserDefaults</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.check:0.5.0'">Check</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.device:0.5.0'">Device</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.filemanager:0.5.0'">FileManager</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.httprequest:0.5.0'">HTTPRequest</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.notification:0.5.0'">Notification</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.openintent:0.5.0'">OpenURL / Intent</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.pasteboard:0.5.0'">Pasteboard</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.userdefaults:0.5.0'">UserDefaults</button>
                 <h6>UI</h6>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.actionsheet:0.4.3'">ActionSheet</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.alertview:0.4.3'">AlertView</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.imagepreviewer:0.4.3'">ImagePreviewer</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.modalcontroller:0.4.3'">ModalController</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.navigationcontroller:0.4.3'">NavigationController</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.navigationitem:0.4.3'">NavigationItem</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.page:0.4.3'">Page</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.pagestate:0.4.3'">PageState</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.picker:0.4.3'">Picker</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.refresh:0.4.3'">Refresh</button>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.toast:0.4.3'">Toast</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.actionsheet:0.5.0'">ActionSheet</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.alertview:0.5.0'">AlertView</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.imagepreviewer:0.5.0'">ImagePreviewer</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.modalcontroller:0.5.0'">ModalController</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.navigationcontroller:0.5.0'">NavigationController</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.navigationitem:0.5.0'">NavigationItem</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.page:0.5.0'">Page</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.pagestate:0.5.0'">PageState</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.picker:0.5.0'">Picker</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.refresh:0.5.0'">Refresh</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.toast:0.5.0'">Toast</button>
                 <h6>WebView</h6>
-                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.pack:0.4.3'">Pack</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.pack:0.5.0'">Pack</button>
+                <button type="button" class="btn btn-default androidModule" data-gradle="compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.skeleton:0.5.0'">Skeleton</button>
                 <h4>1. 添加以下配置到 build.gradle</h4>
-                <pre><code class="language-rb" id="androidGradle">compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:core:0.4.3' </code></pre>
+                <pre><code class="language-rb" id="androidGradle">compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:core:0.5.0' </code></pre>
                 <h4>2. Sync</h4>
                 如果使用 Android Studio，IDE 会提示你同步依赖。
 
