@@ -12,6 +12,7 @@ OPT     opt;
 String  path;
 Bool    animated;
 Object  args;
+String  preloadToken;   // 针对 WebView.Preload API 使用
 
 enum OPT {
     case "push"

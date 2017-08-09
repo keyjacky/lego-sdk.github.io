@@ -16,6 +16,7 @@ MType   modalType;              // Modal 的呈现模式
 Float   modalWidth;             // Modal 的宽
 Float   modalHeight;            // Modal 的高
 Object  args;                   // 要向下一界面的 WebView 传递的参数
+String  preloadToken;   // 针对 WebView.Preload API 使用
 
 enum OPT {
     case "present"

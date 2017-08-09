@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>AlertView | LEGO-SDK</title>
+        <title>Preload | LEGO-SDK</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -37,10 +37,8 @@
         
     
     
-    <link rel="next" href="../../doc/ui/ImagePreviewer.html" />
     
-    
-    <link rel="prev" href="../../doc/ui/ActionSheet.html" />
+    <link rel="prev" href="../../doc/webview/skeleton.html" />
     
 
         
@@ -49,9 +47,9 @@
         
         
     <div class="book"
-        data-level="2.2"
-        data-chapter-title="AlertView"
-        data-filepath="doc/ui/AlertView.md"
+        data-level="3.3"
+        data-chapter-title="Preload"
+        data-filepath="doc/webview/preload.md"
         data-basepath="../.."
         data-revision="Wed Aug 09 2017 12:04:06 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -299,7 +297,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2" data-path="doc/ui/AlertView.html">
+        <li class="chapter " data-level="2.2" data-path="doc/ui/AlertView.html">
             
                 
                     <a href="../../doc/ui/AlertView.html">
@@ -500,7 +498,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="doc/webview/preload.html">
+        <li class="chapter active" data-level="3.3" data-path="doc/webview/preload.html">
             
                 
                     <a href="../../doc/webview/preload.html">
@@ -553,27 +551,15 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="alertview">AlertView</h1>
-<p>&#x4F7F;&#x7528; AlertView &#x6A21;&#x5757;&#x5F39;&#x51FA;&#x4E00;&#x4E2A;&#x539F;&#x751F;&#x7684;&#x8B66;&#x544A;&#x5BF9;&#x8BDD;&#x6846;&#xFF0C;&#x7528;&#x6237;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x9009;&#x9879;&#x540E;&#x4F1A;&#x6709;&#x56DE;&#x8C03;&#x3002;</p>
-<h2 id="requestparams">RequestParams</h2>
-<pre><code>String      title;
-String      message;
-String[]    buttonTitles;
-</code></pre><h2 id="responseparams">ResponseParams</h2>
-<pre><code>Int buttonIndex;
-</code></pre><h2 id="example">Example</h2>
-<pre><code class="lang-javascript">JSMessage.newMessage(<span class="hljs-string">&quot;UI.AlertView&quot;</span>, {
-    title: <span class="hljs-string">&quot;&#x5373;&#x5C06;&#x6BC1;&#x706D;&#x5730;&#x7403;&#xFF0C;&#x8BF7;&#x786E;&#x8BA4;&#x3002;&quot;</span>,
-    buttonTitles: [<span class="hljs-string">&quot;&#x9A6C;&#x4E0A;&#x6BC1;&#x706D;&quot;</span>, <span class="hljs-string">&quot;&#x7A0D;&#x540E;&#x518D;&#x8BD5;&quot;</span>]
-}).call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">meta, result</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(result)
-    <span class="hljs-keyword">if</span> (result.buttonIndex == <span class="hljs-number">0</span>) {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x6B63;&#x5728;&#x53D1;&#x5C04;&#x6838;&#x5F39;...&quot;</span>);
-    }
-    <span class="hljs-keyword">else</span> {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x592A;&#x8FDF;&#x4E86;......&quot;</span>);
-    }
-})
+                        <h1 id="preload">Preload</h1>
+<p>&#x4F7F;&#x7528; Preload &#x53EF;&#x4EE5;&#x52A0;&#x901F; WebView &#x52A0;&#x8F7D;</p>
+<h2 id="&#x539F;&#x7406;">&#x539F;&#x7406;</h2>
+<p>Preload &#x4F1A;&#x5728;&#x540E;&#x53F0;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; Ready &#x597D;&#x7684; WebView&#xFF0C;&#x5F53;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x65F6;&#xFF0C;&#x4F1A;&#x4F18;&#x5148;&#x4F7F;&#x7528;&#x8BE5; WebView &#x52A0;&#x8F7D;&#x65B0;&#x7684;&#x7F51;&#x9875;&#x3002;</p>
+<h2 id="&#x53C2;&#x6570;">&#x53C2;&#x6570;</h2>
+<p>url: String    // &#x9884;&#x52A0;&#x8F7D;&#x7684;&#x7F51;&#x9875;
+token: String  // &#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5C06;&#x8FD9;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;&#x4F20;&#x9012;&#x81F3; UI.NavigationController &#x6216; UI.ModalController &#x4E2D;&#xFF0C;&#x5373;&#x53EF;&#x8FBE;&#x5230; Preload &#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-js">JSMessage.newMessage(<span class="hljs-string">&quot;WebView.Preload&quot;</span>, {url: <span class="hljs-string">&quot;http://yourserver/xxx.html&quot;</span>, token: <span class="hljs-string">&quot;testToken&quot;</span>}).call()
 </code></pre>
 
                     
@@ -585,10 +571,8 @@ String[]    buttonTitles;
         </div>
 
         
-        <a href="../../doc/ui/ActionSheet.html" class="navigation navigation-prev " aria-label="Previous page: ActionSheet"><i class="fa fa-angle-left"></i></a>
+        <a href="../../doc/webview/skeleton.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Skeleton"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../../doc/ui/ImagePreviewer.html" class="navigation navigation-next " aria-label="Next page: ImagePreviewer"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
