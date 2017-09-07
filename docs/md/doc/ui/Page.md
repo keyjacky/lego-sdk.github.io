@@ -41,6 +41,9 @@ BOOL fullScreenContent;
 // 可选，是否允许使用回弹效果 (iOS only)
 BOOL allowBounce;
 
+// 可选，是否在高度不足时，启用回弹效果 (iOS only)
+BOOL alwaysBounce;
+
 // 可选，是否显示滚动条
 BOOL showsIndicator;
 
