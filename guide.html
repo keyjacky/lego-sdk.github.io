@@ -137,6 +137,12 @@
 );</code></pre>
                 SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 JavaScript 的回调。接下来的事情，也就交给 JavaScript 去处理了。
 
+                <h5>5. 白名单</h5>
+                我们使用白名单的机制，确保只有受信的网站才能发起 SDK 请求，如未设置任何白名单，则任何网站都可以发起请求。<br />
+                要为 SDK 设置网站白名单，使用以下方法（一般在 ApplicationDelegate 中执行）
+                <pre><code class="language-oc">[[LGOCore whiteList] addObject:@"google.com.hk"];</code></pre>
+                注意，子域名亦在白名单内，即添加 google.com.hk，那么 map.google.com.hk 也会同样生效。<br />
+                注意，只需要添加域名或 IP 即可，不需要添加协议头（如 http://），也不需要添加端口号（如 :8080）
 
                 <h4>Android</h4>
                 <h5>1. 创建工程</h5>
@@ -162,7 +168,7 @@
     @Nullable
     @Override
     public String getUrlString() {
-        return "http://youserver.com/index.html";
+        return "http://yourserver.com/index.html";
     }
 
 }</code></pre>
@@ -182,6 +188,14 @@
                 我们创建了一个 Activity，并告诉该 Activity 中的 WebView 应该打开某个链接，链接中的 JavaScript 代码随即被执行，并发送请求至 SDK。
                 
                 SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 JavaScript 的回调。接下来的事情，也就交给 JavaScript 去处理了。
+
+                <h5>5. 白名单</h5>
+                我们使用白名单的机制，确保只有受信的网站才能发起 SDK 请求，如未设置任何白名单，则任何网站都可以发起请求。<br />
+                要为 SDK 设置网站白名单，使用以下方法（一般在 Application 类的 onCreate 方法中执行）
+                <pre><code class="language-java">LGOCore.Companion.getWhiteList().add("google.com.hk");</code></pre>
+                注意，子域名亦在白名单内，即添加 google.com.hk，那么 map.google.com.hk 也会同样生效。<br />
+                注意，只需要添加域名或 IP 即可，不需要添加协议头（如 http://），也不需要添加端口号（如 :8080）
+
 
                 <h2>针对前端开发者</h2>
 
