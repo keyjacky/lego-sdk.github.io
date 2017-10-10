@@ -70,11 +70,11 @@
 
                 如果前端开发者请求你添加一项原生功能，有几种方法可以做到。<br/><br/>
 
-                <b>* 使用 JavascriptCore 对 WebView 进行封装，需要自行构建相关协议。</b><br/>
+                <b>* 使用 JavaScriptCore 对 WebView 进行封装，需要自行构建相关协议。</b><br/>
                 <b>* 使用开源库 Cordavor 以及相关的 API。</b><br/>
                 <b>* 使用 NSURLProtocol 等外挂形式做到。</b><br/>
 
-                <br/> 但是，原生开发者在编写 Javascript 过程中，存在一定的学习成本。也因为 Javascript 变化多样，同时要兼顾跨平台的需求，导致自行封装的协议存在一定的局限性。<br/><br/> 有一种方法，可以让原生开发者解脱这种困境，那就是
+                <br/> 但是，原生开发者在编写 JavaScript 过程中，存在一定的学习成本。也因为 JavaScript 变化多样，同时要兼顾跨平台的需求，导致自行封装的协议存在一定的局限性。<br/><br/> 有一种方法，可以让原生开发者解脱这种困境，那就是
                 LEGO SDK。<br/> LEGO SDK 集成简单，容易扩展，并且在不同平台之上拥有一致的调用方法。<br/> 要集成 SDK，对于 iOS 开发者来说，只需要使用 CocoaPods 即可，对于 Android
                 开发者来说，只需要使用 Gradle 即可。
 
@@ -106,8 +106,8 @@
 @end
 </code></pre>
 
-                <h5>3. 执行一段 Javascript</h5>
-                如无意外，在 Run 以后，你将看到一片白屏，因为，我们还没加载任何内容。现在，我们就让 WebView 加载一段 HTML 代码，代码里面会有一段 Javascript 代码， Javascript 代码会请求 SDK 返回当前设备型号。
+                <h5>3. 执行一段 JavaScript</h5>
+                如无意外，在 Run 以后，你将看到一片白屏，因为，我们还没加载任何内容。现在，我们就让 WebView 加载一段 HTML 代码，代码里面会有一段 JavaScript 代码， JavaScript 代码会请求 SDK 返回当前设备型号。
                 <pre><code class="language-objc">@interface ViewController ()
 
 @end
@@ -135,7 +135,7 @@
         document.write('Device Name = ' + res.device.name)
     }
 );</code></pre>
-                SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 Javascript 的回调。接下来的事情，也就交给 Javascript 去处理了。
+                SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 JavaScript 的回调。接下来的事情，也就交给 JavaScript 去处理了。
 
 
                 <h4>Android</h4>
@@ -152,53 +152,36 @@
                 在应用 build.gradle 中添加依赖
 
                 <pre><code class="language-js">dependencies {
-    compile 'com.github.LEGO-SDK.LEGO-SDK-Android:core:0.3.0'
-    compile 'com.github.LEGO-SDK.LEGO-SDK-Android:mod_native_device:0.3.0'
+    compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:core:1.0.0'
+    compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:native.device:1.0.0'
 }</code></pre>
 
                 <h5>2. 添加 WebView</h5>
-                我们已经将 Core 和 Device API 添加到工程里面了，现在我们打开 MainActivity，添加一个全屏显示的 UIWebView，并使其附着至 LGORuntime 中，其中 LGORuntime.debugEnabled(true)
-                是指开启调试模式，这样，我们便可以在 Chrome 中进行调试。
+                我们已经将 Core 和 Device API 添加到工程里面了，现在我们创建 MainActivity 并使其继承 LGOWebViewActivity。
                 <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        WebView webView = new WebView(this);
-        LGORuntime.debugEnabled(true);
-        LGORuntime.attach(webView);
-        setContentView(webView, new ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, 
-            ViewGroup.LayoutParams.MATCH_PARENT)
-        );
+    public String getUrlString() {
+        return "http://youserver.com/index.html";
     }
+
 }</code></pre>
 
-                <h5>3. 执行一段 Javascript</h5>
-                如无意外，在 Run 以后，你将看到一片白屏，因为，我们还没加载任何内容。现在，我们就让 WebView 加载一段 HTML 代码，代码里面会有一段 Javascript 代码， Javascript 代码会请求 SDK 返回当前设备型号。
-                <pre><code class="language-java">public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        LGORuntime.debugEnabled(true);
-        WebView webView = new WebView(this);
-        LGORuntime.attach(webView);
-        webView.loadData("&lt;html&gt;&lt;body&gt;Hello, World!&lt;/body&gt;&lt;script&gt;window.JSBridge && eval(window.JSBridge.bridgeScript());JSMessage.newMessage('Native.Device').call(function(meta, res){document.write('&lt;br/&gt;Device Name = ' + res.device.name)});&lt;/script&gt;&lt;/html&gt;", "text/html", "utf-8");
-        setContentView(webView, new ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, 
-            ViewGroup.LayoutParams.MATCH_PARENT)
-        );
-    }
-}</code></pre>
+                <h5>3. 执行一段 JavaScript</h5>
+                在对应的 html 页面上执行以下 JavaScript 代码
+                <pre><code class="language-html">
+                    eval(JSBridge.bridgeScript());
+                    JSMessage.newMessage('Native.Device').call(
+                        function(meta, res){
+                            document.write('Device Name = ' + res.device.name)
+                        }
+                    );
+                    </code></pre>
 
                 <h5>4. 解读</h5>
-                我们创建了一个 WebView，这个 WebView 在创建后，通过 LGORuntime.attach() 注入 SDK 代码，同时，我们让 WebView 加载了一个 HTML 网页，我们使用以下代码请求 SDK 返回结果。
-                <pre><code class="language-js">JSMessage.newMessage('Native.Device').call(
-    function(meta, res){
-        document.write('Device Name = ' + res.device.name)
-    }
-);</code></pre>
-                SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 Javascript 的回调。接下来的事情，也就交给 Javascript 去处理了。
+                我们创建了一个 Activity，并告诉该 Activity 中的 WebView 应该打开某个链接，链接中的 JavaScript 代码随即被执行，并发送请求至 SDK。
+                
+                SDK 收到请求后，会将请求转发至 Native.Device 模块，然后将结果返回到 JavaScript 的回调。接下来的事情，也就交给 JavaScript 去处理了。
 
                 <h2>针对前端开发者</h2>
 
