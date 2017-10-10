@@ -8,10 +8,8 @@
 
 ## RequestParams
 ```
-String title;
 String leftItem;
 String rightItem;
-String backItem;
 ```
 ## ResponseParams
 ```
@@ -21,10 +19,6 @@ Bool rightTapped;
 ## Example
 
 ```javascript
-// 设置页面标题。
-JSMessage.newMessage("UI.NavigationItem", {
-	title: "Hello"
-}).call(null)
 
 // 设置右侧按钮为图标按钮，那么，需要提供一个参数 rightItem，并为其提供图标地址或者文本。
 JSMessage.newMessage("UI.NavigationItem", {
@@ -35,4 +29,5 @@ JSMessage.newMessage("UI.NavigationItem", {
         console.log("Done button tapped.")
     }
 })
+
 ```

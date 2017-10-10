@@ -1,9 +1,7 @@
 # Summary
 
 * [Native](doc/native/README.md)
-    * [Call](doc/native/Call.md)
     * [Check](doc/native/Check.md)
-    * [DataModel](doc/native/DataModel.md)
     * [Device](doc/native/Device.md)
     * [FileManager](doc/native/FileManager.md)
     * [HTTPRequest](doc/native/HTTPRequest.md)
@@ -28,5 +26,5 @@
 
 * [WebView](doc/webview/README.md)
     * [Pack](doc/webview/pack.md)
-    * [Skeleton](doc/webview/skeleton.md)
-    * [Preload](doc/webview/preload.md)
+    * [Skeleton(Beta)](doc/webview/skeleton.md)
+    * [Preload(Beta)](doc/webview/preload.md)
