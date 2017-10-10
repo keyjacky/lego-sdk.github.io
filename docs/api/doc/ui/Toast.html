@@ -53,7 +53,7 @@
         data-chapter-title="Toast"
         data-filepath="doc/ui/Toast.md"
         data-basepath="../.."
-        data-revision="Thu Sep 07 2017 14:38:21 GMT+0800 (CST)"
+        data-revision="Tue Oct 10 2017 11:04:35 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -558,9 +558,10 @@
 <h2 id="requestparams">RequestParams</h2>
 <pre><code>
 string opt;     // &#x52A8;&#x4F5C;&#xFF0C;&gt;&gt;&gt; &apos;show&apos;, &apos;hide&apos;
-string style;   // &#x56FE;&#x6807;&#x6837;&#x5F0F;&#xFF0C;&gt;&gt;&gt; &apos;loading&apos;, &apos;success&apos;, &apos;error&apos;
+string style;   // &#x56FE;&#x6807;&#x6837;&#x5F0F;&#xFF0C;&gt;&gt;&gt; &apos;loading&apos;, &apos;success&apos;, &apos;error&apos;, &apos;text&apos;
 string title;   // &#x56FE;&#x6807;&#x4E0B;&#x65B9;&#x7684;&#x63D0;&#x793A;&#x6587;&#x5B57;
 int    timeout; // &#x8D85;&#x65F6;&#x503C;&#xFF0C;&#x4EC5;&#x5BF9;&#x4E8E; style === &quot;loading&quot; &#x65F6;&#x6709;&#x6548;&#xFF0C;&#x6700;&#x5927;&#x503C;&#x4E3A; 10&#xFF0C;&#x5F53;&#x8D85;&#x8FC7; timeout &#x65F6;&#xFF0C;Toast &#x4F1A;&#x88AB;&#x9690;&#x85CF;&#x3002;
+bool   masked;  // &#x906E;&#x7F69;&#xFF0C;&#x4E3A;true&#x65F6;&#x906E;&#x7F69;&#x751F;&#x6548;&#xFF0C;false&#x5219;&#x4E0D;&#x751F;&#x6548;
 </code></pre><h2 id="responseparams">ResponseParams</h2>
 <p>-</p>
 <h2 id="example">Example</h2>
@@ -569,6 +570,7 @@ int    timeout; // &#x8D85;&#x65F6;&#x503C;&#xFF0C;&#x4EC5;&#x5BF9;&#x4E8E; styl
     style: <span class="hljs-string">&quot;loading&quot;</span>,
     title: <span class="hljs-string">&quot;&#x52A0;&#x8F7D;&#x4E2D;&quot;</span>,
     timeout: <span class="hljs-number">10</span>,
+    masked: <span class="hljs-literal">true</span>,
 }).call(<span class="hljs-literal">null</span>);
 </code></pre>
 
