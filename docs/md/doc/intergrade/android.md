@@ -4,6 +4,17 @@
 
 ## 添加依赖
 
+添加 Jitpack 仓库至 build.gradle
+
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
 请根据需要，将对应依赖添加至 Gradle 文件。
 
 ```
@@ -51,4 +62,4 @@ LGOCore.Companion.getWhiteList().add("webpage.yy.com");
 ```
 
 * 注意，子域名亦在白名单内，即添加 webpage.yy.com，那么 map.webpage.yy.com 也会同样生效。
-* 注意，只需要添加域名或 IP 即可，不需要添加协议头（如 http://），也不需要添加端口号（如 :8080）
+* 注意，只需要添加域名或 IP 即可，不需要添加协议头（如 ```http://```），也不需要添加端口号（如 ```:8080```）
