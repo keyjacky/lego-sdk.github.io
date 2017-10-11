@@ -1,5 +1,10 @@
 # Summary
 
+* [集成](doc/intergrade/README.md)
+    * [iOS](doc/intergrade/ios.md)
+    * [Android](doc/intergrade/android.md)
+    * [Web](doc/intergrade/web.md)
+
 * [Native](doc/native/README.md)
     * [Check](doc/native/Check.md)
     * [Device](doc/native/Device.md)
@@ -28,3 +33,7 @@
     * [Pack](doc/webview/pack.md)
     * [Skeleton(Beta)](doc/webview/skeleton.md)
     * [Preload(Beta)](doc/webview/preload.md)
+
+* [扩展开发](doc/extension/README.md)
+    * [iOS](doc/extension/ios.md)
+    * [Android](doc/extension/android.md)

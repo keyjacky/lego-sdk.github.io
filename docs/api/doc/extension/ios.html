@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>HTTPRequest | LEGO-SDK</title>
+        <title>iOS | LEGO-SDK</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.7">
@@ -37,10 +37,10 @@
         
     
     
-    <link rel="next" href="../../doc/native/Notification.html" />
+    <link rel="next" href="../../doc/extension/android.html" />
     
     
-    <link rel="prev" href="../../doc/native/FileManager.html" />
+    <link rel="prev" href="../../doc/extension/index.html" />
     
 
         
@@ -49,9 +49,9 @@
         
         
     <div class="book"
-        data-level="2.4"
-        data-chapter-title="HTTPRequest"
-        data-filepath="doc/native/HTTPRequest.md"
+        data-level="5.1"
+        data-chapter-title="iOS"
+        data-filepath="doc/extension/ios.md"
         data-basepath="../.."
         data-revision="Wed Oct 11 2017 14:19:27 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -209,7 +209,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.4" data-path="doc/native/HTTPRequest.html">
+        <li class="chapter " data-level="2.4" data-path="doc/native/HTTPRequest.html">
             
                 
                     <a href="../../doc/native/HTTPRequest.html">
@@ -572,7 +572,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="5.1" data-path="doc/extension/ios.html">
+        <li class="chapter active" data-level="5.1" data-path="doc/extension/ios.html">
             
                 
                     <a href="../../doc/extension/ios.html">
@@ -640,38 +640,117 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="httprequest">HTTPRequest</h1>
-<p>&#x4F7F;&#x7528; HTTPRequest &#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x7A81;&#x7834;&#x8DE8;&#x57DF;&#x9650;&#x5236;&#xFF0C;&#x65E0;&#x987B;JSONP&#xFF0C;&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x4EFB;&#x610F;HTTP&#x6570;&#x636E;&#x3002;</p>
-<p>&#x5982;&#x679C;HTTP&#x6570;&#x636E;&#x662F; UTF-8 &#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x8FD4;&#x56DE; responseText&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x8FD4;&#x56DE; Base64 &#x7F16;&#x7801;&#x540E;&#x7684; String &#x81F3; responseData&#x3002;</p>
-<p>&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x7684; HTTP Header &#x5230;&#x8BF7;&#x6C42;&#x7684;&#x5934;&#x90E8;&#x3002;</p>
-<h2 id="&#x5B89;&#x5168;">&#x5B89;&#x5168;</h2>
-<p>&#x5982;&#x679C;&#x4F7F;&#x7528;&#x8BE5; API&#xFF0C;Native &#x4F1A;&#x7981;&#x7528;&#x4EFB;&#x4F55;&#x81EA;&#x5E26;&#x7684; Cookie &#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x5B89;&#x5168;&#x6027;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528; Cookie&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x81EA;&#x884C;&#x5C06;&#x5176;&#x6DFB;&#x52A0;&#x81F3; Header &#x4E2D;&#xFF0C;&#x6216;&#x8005;&#x4F7F;&#x7528;Web&#x63D0;&#x4F9B;&#x7684;Ajax&#x65B9;&#x6CD5;&#x3002;</p>
-<h2 id="requestparams">RequestParams</h2>
-<pre><code>String             URL;
-Base64_String     data;
-Bool             showActivityIndicator;
-Int                timeout;
-Object             headers;
-</code></pre><h2 id="responseparams">ResponseParams</h2>
-<pre><code>Int             statusCode;
-String             responseText;
-Base64_String     responseData;
-</code></pre><h2 id="example">Example</h2>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x83B7;&#x53D6;&#x4E00;&#x4E2A;GitHub&#x7684;&#x63A5;&#x53E3;&#x6570;&#x636E;</span>
-JSMessage.newMessage(<span class="hljs-string">&quot;Native.HTTPRequest&quot;</span>, {
-    URL: <span class="hljs-string">&quot;https://status.github.com/api.json&quot;</span>,
-    headers: {aKey: <span class="hljs-string">&quot;aValue&quot;</span>}
-}).call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">meta, result</span>) </span>{
-    <span class="hljs-keyword">if</span> (meta.error){ <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(error); }
-    <span class="hljs-built_in">console</span>.log(result)
-})
+                        <h1 id="ios">iOS</h1>
+<h2 id="&#x57FA;&#x7C7B;">&#x57FA;&#x7C7B;</h2>
+<p>&#x5728;&#x521B;&#x5EFA;&#x6269;&#x5C55;&#x524D;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5148;&#x4E86;&#x89E3; SDK &#x76F8;&#x5173;&#x7684;&#x57FA;&#x7C7B;&#x3002;</p>
+<h3 id="lgomodule">LGOModule</h3>
+<p>LGOModule &#x662F; API &#x7684;&#x5165;&#x53E3;&#x7C7B;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x76F4;&#x63A5;&#x8C03;&#x7528; LGOModule &#x4E2D;&#x7684; build &#x65B9;&#x6CD5;&#x3002; &#x4F60;&#x9700;&#x8981;&#x91CD;&#x5199; build &#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; LGORequestable &#x5B9E;&#x4F8B;&#x3002;</p>
+<h3 id="lgorequest">LGORequest</h3>
+<p>LGORequest &#x662F;&#x8BF7;&#x6C42;&#x7C7B;&#xFF0C;&#x4EFB;&#x4F55;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x88AB;&#x8F6C;&#x6362;&#x4E3A; LGORequest &#x4EE5;&#x627F;&#x8F7D;&#x76F8;&#x5173;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x3002;</p>
+<h3 id="lgorequestable">LGORequestable</h3>
+<p>LGORequestable &#x662F;&#x6267;&#x884C;&#x8BF7;&#x6C42;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8BF7;&#x6C42;&#x6700;&#x7EC8;&#x6267;&#x884C;&#x8005;&#x90FD;&#x662F; LGORequestable&#x3002;
+&#x4F60;&#x9700;&#x8981;&#x91CD;&#x5199; request &#x65B9;&#x6CD5;&#xFF0C;&#x540C;&#x6B65;&#x6216;&#x5F02;&#x6B65;&#x5730;&#x8FD4;&#x56DE; LGOResponse &#x5B9E;&#x4F8B;&#x3002;</p>
+<h3 id="lgoresponse">LGOResponse</h3>
+<p>LGOResponse &#x662F;&#x7ED3;&#x679C;&#x7C7B;&#xFF0C;LGOResponse &#x4F1A;&#x88AB;&#x8F6C;&#x6362;&#x4E3A; JSON &#x6570;&#x636E;&#x5E76;&#x8FD4;&#x56DE;&#x81F3; WebView&#x3002;</p>
+<h2 id="&#x7F16;&#x5199;&#x6269;&#x5C55;">&#x7F16;&#x5199;&#x6269;&#x5C55;</h2>
+<h3 id="&#x521B;&#x5EFA;-lgomodule-&#x6269;&#x5C55;&#x7C7B;">&#x521B;&#x5EFA; LGOModule &#x6269;&#x5C55;&#x7C7B;</h3>
+<p>New file -&gt; &#x521B;&#x5EFA;&#x4E00;&#x4E2A; NSObject &#x7C7B;&#xFF0C;&#x5E76;&#x7EE7;&#x627F; LGOModule&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  LGOTest.h</span>
 
-<span class="hljs-comment">// &#x83B7;&#x53D6;&#x56FE;&#x7247;&#x6570;&#x636E;</span>
-JSMessage.newMessage(<span class="hljs-string">&quot;Native.HTTPRequest&quot;</span>, {
-    URL: <span class="hljs-string">&quot;http://www.huanju.cn/s/v1206/HuanJu-LOGO-PNG.png&quot;</span>
-}).call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">meta, result</span>)</span>{
-    <span class="hljs-keyword">if</span> (meta.error){ <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(error); }
-})
+<span class="hljs-preprocessor">#import <span class="hljs-title">&lt;LEGO-SDK/LGOProtocols.h&gt;</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">LGOTest</span> : <span class="hljs-title">LGOModule</span></span>
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<pre><code class="lang-objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  LGOTest.m</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;LGOTest.h&quot;</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">LGOTest</span></span>
+
++ (<span class="hljs-keyword">void</span>)load {
+    [[LGOCore modules] addModuleWithName:<span class="hljs-string">@&quot;UED.Test&quot;</span> instance:[LGOTest new]];
+}
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="&#x521B;&#x5EFA;-lgorequest-&#x7C7B;">&#x521B;&#x5EFA; LGORequest &#x7C7B;</h3>
+<p>&#x6309;&#x7167;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x4FE1;&#x606F;&#xFF0C;&#x521B;&#x5EFA; Request &#x7C7B;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  LGOTest.m</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;LGOTest.h&quot;</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">LGOTestRequest</span>: <span class="hljs-title">LGORequest</span></span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *name;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">LGOTestRequest</span></span>
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="&#x521B;&#x5EFA;-lgoresponse-&#x7C7B;">&#x521B;&#x5EFA; LGOResponse &#x7C7B;</h3>
+<p>&#x6309;&#x7167;&#x8FD4;&#x56DE;&#x503C;&#x4FE1;&#x606F;&#xFF0C;&#x521B;&#x5EFA; Response &#x7C7B;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-comment">//</span>
+<span class="hljs-comment">//  LGOTest.m</span>
+
+<span class="hljs-preprocessor">#import <span class="hljs-title">&quot;LGOTest.h&quot;</span></span>
+
+<span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">LGOTestResponse</span> : <span class="hljs-title">LGOResponse</span></span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">copy</span>) <span class="hljs-built_in">NSString</span> *text;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">LGOTestResponse</span></span>
+
+- (<span class="hljs-built_in">NSDictionary</span> *)resData {
+    <span class="hljs-keyword">return</span> @{
+             <span class="hljs-string">@&quot;text&quot;</span>: <span class="hljs-keyword">self</span><span class="hljs-variable">.text</span> != <span class="hljs-literal">nil</span> ? <span class="hljs-keyword">self</span><span class="hljs-variable">.text</span> : [<span class="hljs-built_in">NSNull</span> null]
+             };
+}
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="&#x521B;&#x5EFA;-lgorequestable-&#x7C7B;">&#x521B;&#x5EFA; LGORequestable &#x7C7B;</h3>
+<p>&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B; LGORequestable &#x4EE3;&#x8868;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA; LGOTestOperation &#x7C7B;&#x5E76;&#x7EE7;&#x627F; LGORequestable&#xFF0C;&#x91CD;&#x5199; requestSynchronize &#x65B9;&#x6CD5;&#x4EE5;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">LGOTestOperation</span> : <span class="hljs-title">LGORequestable</span></span>
+
+<span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">strong</span>) LGOTestRequest *request;
+
+<span class="hljs-keyword">@end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">LGOTestOperation</span></span>
+
+- (LGOResponse *)requestSynchronize {
+    LGOTestResponse *response = [[LGOTestResponse alloc] init];
+    response<span class="hljs-variable">.text</span> = [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@&quot;Hello, %@.&quot;</span>, <span class="hljs-keyword">self</span><span class="hljs-variable">.request</span><span class="hljs-variable">.name</span>];
+    <span class="hljs-keyword">return</span> [response accept:<span class="hljs-literal">nil</span>];
+}
+
+<span class="hljs-keyword">@end</span>
+</code></pre>
+<h3 id="&#x5904;&#x7406;&#x8BF7;&#x6C42;">&#x5904;&#x7406;&#x8BF7;&#x6C42;</h3>
+<p>&#x5728; LGOTest &#x7C7B;&#x4E2D;&#xFF0C;&#x91CD;&#x5199; <code>buildWithDictionary</code> &#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x63A5;&#x6536;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE; LGORequestable&#x3002;</p>
+<pre><code class="lang-objectivec"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">LGOTest</span></span>
+
+- (LGORequestable *)buildWithDictionary:(<span class="hljs-built_in">NSDictionary</span> *)dictionary context:(LGORequestContext *)context {
+    LGOTestRequest *reqeust = [[LGOTestRequest alloc] init];
+    reqeust<span class="hljs-variable">.name</span> = [dictionary[<span class="hljs-string">@&quot;name&quot;</span>] isKindOfClass:[<span class="hljs-built_in">NSString</span> class]] ? dictionary[<span class="hljs-string">@&quot;name&quot;</span>] : <span class="hljs-literal">nil</span>;
+    <span class="hljs-keyword">if</span> (reqeust<span class="hljs-variable">.name</span> == <span class="hljs-literal">nil</span>) {
+        <span class="hljs-keyword">return</span> [LGORequestable rejectWithDomain:<span class="hljs-string">@&quot;Test&quot;</span> code:-<span class="hljs-number">1</span> reason:<span class="hljs-string">@&quot;invalid name.&quot;</span>];
+    }
+    LGOTestOperation *operation = [[LGOTestOperation alloc] init];
+    operation<span class="hljs-variable">.request</span> = reqeust;
+    <span class="hljs-keyword">return</span> operation;
+}
+
+<span class="hljs-keyword">@end</span>
 </code></pre>
 
                     
@@ -683,10 +762,10 @@ JSMessage.newMessage(<span class="hljs-string">&quot;Native.HTTPRequest&quot;</s
         </div>
 
         
-        <a href="../../doc/native/FileManager.html" class="navigation navigation-prev " aria-label="Previous page: FileManager"><i class="fa fa-angle-left"></i></a>
+        <a href="../../doc/extension/index.html" class="navigation navigation-prev " aria-label="Previous page: 扩展开发"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../doc/native/Notification.html" class="navigation navigation-next " aria-label="Next page: Notification"><i class="fa fa-angle-right"></i></a>
+        <a href="../../doc/extension/android.html" class="navigation navigation-next " aria-label="Next page: Android"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
