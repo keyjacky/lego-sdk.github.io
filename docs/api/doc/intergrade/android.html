@@ -53,7 +53,7 @@
         data-chapter-title="Android"
         data-filepath="doc/intergrade/android.md"
         data-basepath="../.."
-        data-revision="Wed Oct 11 2017 14:29:01 GMT+0800 (CST)"
+        data-revision="Thu Oct 19 2017 10:54:11 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -672,6 +672,9 @@ compile &apos;com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.picker:1.0.3&apos;
 compile &apos;com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.refresh:1.0.3&apos;
 compile &apos;com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.toast:1.0.3&apos;
 compile &apos;com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.pack:1.0.3&apos;
+</code></pre><h2 id="proguard-&#x89C4;&#x5219;">ProGuard &#x89C4;&#x5219;</h2>
+<p>&#x5982;&#x9700;&#x4EE3;&#x7801;&#x6DF7;&#x6DC6;&#xFF0C;&#x8BF7;&#x6DFB;&#x52A0;&#x4EE5;&#x4E0B;&#x89C4;&#x5219;&#x81F3; proguard-rule.pro</p>
+<pre><code>-keep public class * extends com.opensource.legosdk.core.LGOModule
 </code></pre><h2 id="&#x542F;&#x52A8;-webview">&#x542F;&#x52A8; WebView</h2>
 <p>&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x5728;&#x4EFB;&#x610F; Activity &#x542F;&#x52A8;&#x4E00;&#x4E2A; WebViewActivity&#x3002;</p>
 <pre><code class="lang-java">LGOWebViewActivity.Companion.openURL(MainActivity.<span class="hljs-keyword">this</span>, <span class="hljs-string">&quot;http://webpage.yy.com/s/lego-sdk/orz.html&quot;</span>);

@@ -41,6 +41,14 @@ compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:ui.toast:1.0.3'
 compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.pack:1.0.3'
 ```
 
+## ProGuard 规则
+
+如需代码混淆，请添加以下规则至 proguard-rule.pro
+
+```
+-keep public class * extends com.opensource.legosdk.core.LGOModule
+```
+
 ## 启动 WebView
 
 使用以下方法，可在任意 Activity 启动一个 WebViewActivity。
