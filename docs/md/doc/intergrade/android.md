@@ -47,6 +47,9 @@ compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.pack:1.0.6'
 
 ```
 -keep public class * extends com.opensource.legosdk.core.LGOModule
+-keepclassmembers public class * extends com.opensource.legosdk.core.LGOModule {
+    public *;
+}
 ```
 
 ## 启动 WebView
