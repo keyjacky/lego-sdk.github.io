@@ -60,7 +60,7 @@ compile 'com.github.LEGO-SDK.LEGO-SDK-Kotlin:webview.pack:1.0.8'
 LGOWebViewActivity.Companion.openURL(MainActivity.this, "http://webpage.yy.com/s/lego-sdk/orz.html");
 ```
 
-* ```http://webpage.yy.com/s/lego-sdk/orz.html``` 是一个调试页面，可供测试使用。
+* ```http://webpage.yy.com/s/lego-sdk/index.html``` 是一个调试页面，可供测试使用。
 
 ## 白名单
 
