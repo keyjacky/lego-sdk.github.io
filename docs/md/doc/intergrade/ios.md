@@ -47,7 +47,7 @@ viewController.url = @"http://webpage.yy.com/s/lego-sdk/orz.html";
 [self.navigationController pushViewController:viewController animated:YES];
 ```
 
-* ```http://webpage.yy.com/s/lego-sdk/orz.html``` 是一个调试页面，可供测试使用。
+* ```http://webpage.yy.com/s/lego-sdk/index.html``` 是一个调试页面，可供测试使用。
 
 ## 白名单
 
